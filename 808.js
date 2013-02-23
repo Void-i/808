@@ -70,6 +70,7 @@ function command(data) {
         if(debug){updateChat("[#808]","Status changed by ,DerpTheBass'")}
     }
     if (data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            mirror = false;
             autowoot = true;
                 if(debug){updateChat("[#808]","Autowoot turned on by ,DerpTheBass'")}
     }
@@ -90,9 +91,9 @@ function command(data) {
           Models.user.changeStatus(1);
            setTimeout(function(){document.location.reload(true)},3000);
     }
-      if (data.type === "mention" && data.message.indexOf("-leave") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+      /*if (data.type === "mention" && data.message.indexOf("-leave") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
            setTimeout(function(){window.close},2000);
-    }
+    }*/
     if (data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
         Models.user.changeDisplayName(RegExp.$1);
         updateChat("[#808]","Username changed by ,DerpTheBass'");
