@@ -1,3 +1,4 @@
+API.sendChat("@,DerpTheBass' :3");
 autowoot = true;
 API.addEventListener(API.CHAT, command);
 function command(data) {
