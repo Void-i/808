@@ -75,7 +75,7 @@ function command(data) {
                 if(debug){updateChat("[#808]","Autowoot turned on by ,DerpTheBass'")}
     }
        if (data.message.indexOf("-ping") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-           console.log("Pong!");
+           API.sendChat("@,DerpTheBass' Pong!");
     }
         if (data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 autowoot = false;  
