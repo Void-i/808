@@ -27,6 +27,18 @@ if(autowoot){
         $("#button-vote-positive").click();
     }
 }
+
+if(mirror){
+function voteUpdate(){
+if(vote = 1){
+        $("#button-vote-positive").click();
+        console.log("Mirroring Vote");
+}else if(vote = -1){
+        $("#button-vote-negative").click();
+        }  
+    }
+}
+
 /******************************/
 function command(data) {
     if (data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
@@ -71,15 +83,4 @@ function command(data) {
 }
 
 /*****************************************************************************************/
-function voteUpdate(){
-switch(vote){
-    case 1:
-        $("#button-vote-positive").click();
-        break;
-    case -1:
-        $("#button-vote-negative").click();
-        break;
-    default:
-        break;
-  }
-}
+
