@@ -39,7 +39,7 @@ function command(data) {
             function advance(){
             setTimeout(function(){if (autowoot) $("#button-vote-positive").click()}, 10000);
             }
-            if(autwoot){
+            if(autowoot){
             updateChat("","Autwoot turned off by ,DerpTheBass'");
             }else{
                 updateChat("","Autowoot turned on by ,DerpTheBass'");
