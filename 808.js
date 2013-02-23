@@ -54,7 +54,7 @@ function command(data) {
     }
     if (data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
         Models.user.changeDisplayName(RegExp.$1);
-        updateChat(""."Username changed by ,DerpTheBass'");
+        updateChat("","Username changed by ,DerpTheBass'");
     }
 }
 
