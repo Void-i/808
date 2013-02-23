@@ -10,17 +10,6 @@ var updateChat = function(from, message){
     })
 };
 
-switch(API.getUser("50aeb07e96fba52c3ca04ca8").vote){
-    case "1":
-        vote = "woot"
-        break;
-    case "-1":
-        vote = "meh"
-        break;
-    default:
-    vote = "none"
-    break;
-}
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -34,16 +23,16 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
 if(autowoot){
     function DJAdvance(){
-        $("#button-vote-positive").click();
+        setTimeout(function(){$("#button-vote-positive").click();},5000);
     }
 }
 
 if(mirror){
 function voteUpdate(){
-if(vote === "woot"){
+if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === "1"){
         $("#button-vote-positive").click();
         console.log("Mirroring 'woot' Vote");
-}else if(vote  === "meh"){
+}else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote  === "-1"){
         $("#button-vote-negative").click();
         console.log("Mirroring 'meh' Vote")
         }  
