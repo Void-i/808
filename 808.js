@@ -1,4 +1,5 @@
 autowoot = false;
+mirror = true;
 
 var vote = API.getUser("50aeb07e96fba52c3ca04ca8").vote;
 
@@ -32,9 +33,10 @@ if(mirror){
 function voteUpdate(){
 if(vote = 1){
         $("#button-vote-positive").click();
-        console.log("Mirroring Vote");
+        console.log("Mirroring 'woot' Vote");
 }else if(vote = -1){
         $("#button-vote-negative").click();
+        console.log("Mirroring 'meh' Vote")
         }  
     }
 }
@@ -68,6 +70,15 @@ function command(data) {
         if (data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 autowoot = false;  
                 updateChat("","Autowoot turned off by ,DerpTheBass'");
+    }
+         if (data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                autowoot = false;
+                mirror = true;  
+                updateChat("","Mirror vote turned on by ,DerpTheBass'");
+    }
+         if (data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                mirror = false;  
+                updateChat("","Mirror vote turned off by ,DerpTheBass'");
     }
       if (data.type === "mention" && data.message.indexOf("-reload") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
           Models.user.changeStatus(1);
