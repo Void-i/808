@@ -27,7 +27,8 @@ function command(data) {
             }
     }
       if (data.type === "mention" && data.message.indexOf("-reload") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-           setTimeout(function(){document.location.reload(true)},2000);
+          Models.user.changeStatus(1);
+           setTimeout(function(){document.location.reload(true)},3000);
     }
       if (data.type === "mention" && data.message.indexOf("-leave") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
            setTimeout(function(){window.close},2000);
