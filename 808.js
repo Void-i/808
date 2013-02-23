@@ -1,3 +1,7 @@
+autowoot = false;
+
+var vote = API.getUser("50aeb07e96fba52c3ca04ca8").vote;
+
 var updateChat = function(from, message){
     Models.chat.receive({
         type: "update",
@@ -6,12 +10,24 @@ var updateChat = function(from, message){
         language: Models.user.data.language
     })
 };
-//setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
-var vote = API.getUser("50aeb07e96fba52c3ca04ca8").vote;
-API.addEventListener(API.VOTE_UPDATE, voteUpdate);
-setTimeout(function(){Models.user.changeStatus(0)},2000);
-autowoot = true;
+
+/******************************/
 API.addEventListener(API.CHAT, command);
+
+API.addEventListener(API.DJ_ADVANCE, DJAdvance);
+
+//setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
+
+API.addEventListener(API.VOTE_UPDATE, voteUpdate);
+
+setTimeout(function(){Models.user.changeStatus(0)},2000);
+
+if(autowoot){
+    function DJAdvance(){
+        $("#button-vote-positive").click();
+    }
+}
+/******************************/
 function command(data) {
     API.addEventListener(API.DJ_ADVANCE, advance);
     if (data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
@@ -34,16 +50,13 @@ function command(data) {
         Models.user.changeStatus(2);
         updateChat("","Status changed by ,DerpTheBass'");
     }
-    if (data.type === "mention" && data.message.indexOf("-woot" || "-autowoot") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-            autowoot = !autowoot;
-            function advance(){
-            setTimeout(function(){if (autowoot) $("#button-vote-positive").click()}, 10000);
-            }
-            if(autowoot){
-            updateChat("","Autwoot turned off by ,DerpTheBass'");
-            }else{
+    if (data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            autowoot = true;
                 updateChat("","Autowoot turned on by ,DerpTheBass'");
-            }
+    }
+        if (data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                autowoot = false;  
+                updateChat("","Autowoot turned off by ,DerpTheBass'");
     }
       if (data.type === "mention" && data.message.indexOf("-reload") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
           Models.user.changeStatus(1);
