@@ -1,5 +1,6 @@
 //setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
 $(window).unload(function(){
+    alert("Reloading");
     Models.user.changeStatus(1);
     });
 setTimeout(function(){Models.user.changeStatus(0)},2000);
