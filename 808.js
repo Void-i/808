@@ -10,6 +10,17 @@ var updateChat = function(from, message){
     })
 };
 
+switch(API.getUser("50aeb07e96fba52c3ca04ca8").vote){
+    case 1:
+        vote = "woot"
+        break;
+    case -1:
+        vote = "meh"
+        break;
+    default:
+    vote = "none"
+    break;
+}
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -29,10 +40,10 @@ if(autowoot){
 
 if(mirror){
 function voteUpdate(){
-if(API.getUser("50aeb07e96fba52c3ca04ca8").vote = 1){
+if(vote === "woot"){
         $("#button-vote-positive").click();
         console.log("Mirroring 'woot' Vote");
-}else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote = -1){
+}else if(vote  === "meh"){
         $("#button-vote-negative").click();
         console.log("Mirroring 'meh' Vote")
         }  
