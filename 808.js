@@ -11,10 +11,10 @@ var updateChat = function(from, message){
 };
 
 switch(API.getUser("50aeb07e96fba52c3ca04ca8").vote){
-    case 1:
+    case "1":
         vote = "woot"
         break;
-    case -1:
+    case "-1":
         vote = "meh"
         break;
     default:
