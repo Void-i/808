@@ -33,9 +33,9 @@ if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === 1){
         $("#button-vote-positive").click();
         console.log("Mirroring 'woot' Vote");
 }
-else if(API.getUser("50aeb07e96fba52c3ca04ca8".vote === -1){
+else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
         $("#button-vote-negative").click();
-        console.log("Mirroring 'meh' Vote")
+        console.log("Mirroring 'meh' Vote");
         }  
     }
 }
