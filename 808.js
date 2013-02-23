@@ -1,4 +1,7 @@
 //setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
+$(window).unload(function(){
+    Models.user.changeStatus(1);
+    });
 setTimeout(function(){Models.user.changeStatus(0)},2000);
 autowoot = true;
 API.addEventListener(API.CHAT, command);
@@ -26,11 +29,7 @@ function command(data) {
             }
     }
       if (data.type === "mention" && data.message.indexOf("-reload") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-           Models.user.changeStatus(1);
            setTimeout(function(){document.location.reload(true)},2000);
-    }
-    if (data.type === "mention" && data.message.indexOf("-meh" || "eww") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-        $("#button-vote-negative").click();
     }
     if (data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
         Models.user.changeDisplayName(RegExp.$1);
