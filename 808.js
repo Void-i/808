@@ -31,10 +31,10 @@ if(autowoot){
 
 if(mirror){
 function voteUpdate(){
-if(vote === 1){
+if(vote = 1){
         $("#button-vote-positive").click();
         console.log("Mirroring 'woot' Vote");
-}else if(vote === -1){
+}else if(vote = -1){
         $("#button-vote-negative").click();
         console.log("Mirroring 'meh' Vote")
         }  
