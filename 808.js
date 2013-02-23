@@ -1,7 +1,7 @@
 autowoot = false;
 mirror = true;
 
-var vote = API.getUser("50aeb07e96fba52c3ca04ca8").vote;
+var mirrorVote = API.getUser("50aeb07e96fba52c3ca04ca8").vote;
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -31,10 +31,10 @@ if(autowoot){
 
 if(mirror){
 function voteUpdate(){
-if(vote = 1){
+if(mirrorVote = 1){
         $("#button-vote-positive").click();
         console.log("Mirroring 'woot' Vote");
-}else if(vote = -1){
+}else if(mirrorVote = -1){
         $("#button-vote-negative").click();
         console.log("Mirroring 'meh' Vote")
         }  
