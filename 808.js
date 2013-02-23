@@ -29,7 +29,6 @@ if(autowoot){
 }
 /******************************/
 function command(data) {
-    API.addEventListener(API.DJ_ADVANCE, advance);
     if (data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(0);
         updateChat("","Status changed by ,DerpTheBass'");
