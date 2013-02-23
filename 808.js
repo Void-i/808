@@ -18,6 +18,8 @@ API.addEventListener(API.DJ_ADVANCE, DJAdvance);
 
 //setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
 
+console.log("[#808] Running #808 Alt control script");
+
 API.addEventListener(API.VOTE_UPDATE, voteUpdate);
 
 setTimeout(function(){Models.user.changeStatus(0)},2000);
