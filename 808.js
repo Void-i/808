@@ -1,4 +1,4 @@
-API.sendChat("@,DerpTheBass' :3");
+setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
 autowoot = true;
 API.addEventListener(API.CHAT, command);
 function command(data) {
