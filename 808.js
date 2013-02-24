@@ -12,6 +12,8 @@ var updateChat = function(from, message){
 };
 
 var joined = new Date().getTime();
+
+var day = new Date();
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -46,6 +48,10 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
         if(debug){console.log("[#808] Mirroring 'meh' Vote")}
         }  
     }
+}
+
+if(day = 5){
+	console.log("It's weird day!");
 }
 
 /******************************/
