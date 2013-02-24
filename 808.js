@@ -67,11 +67,11 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
 /******************************/
 function command(data) {
-      if (!Recent && script && data.type === "mention" && data.message.indexOf("What are you") > -1) {
+     /* if (!Recent && script && data.type === "mention" && data.message.indexOf("What are you") > -1) {
         setTimeout(function(){API.sendChat("@"+data.username + " What yourself!")},1500);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
-    }
+    }*/
     if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
         if(debug){updateChat("[#808] ","Debug mode on")}
@@ -155,7 +155,7 @@ function command(data) {
         }
         if (script && data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var elapsed = new Date().getTime() - joined;
-            API.sendChat("/em has been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug);
+            API.sendChat("/em has been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug);
             if(debug){console.log("Sending status/info")}
         }
     }
