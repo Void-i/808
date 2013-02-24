@@ -12,10 +12,10 @@ if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromI
 }
 }
 
-debug = false,
-autowoot = false,
-mirror = true,
-script = true,
+debug = false;
+autowoot = false;
+mirror = true;
+script = true;
 wootmode = "Mirror";
 
 var updateChat = function(from, message){
@@ -94,7 +94,10 @@ function command(data) {
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             wootmode = "Auto";
-            mirror = false;
+            if(mirror){
+            	mirror = false;
+               	if(debug){updateChat("[#808] ","Mirror turned off due to autowoot")}
+            }
             autowoot = true;
                 if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
     }
@@ -103,19 +106,27 @@ function command(data) {
     }
         if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 wootmode = "Off";
-                mirror = false;
+                if(mirror){
+                	mirror = false;
+                	updateChat("[#808} ","Mirror turned of due to autowoot")
                 autowoot = false;  
                 if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
     }
          if (script && data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 wootmode = "Mirror";
-                autowoot = false;
+                if(autowoot){
+                	updateChat("[#808} ","Autowoot turned off due to mirror");
+                	autowoot = false;
+                }
                 mirror = true;  
                 if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
     }
          if (script && data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 wootmode = "Off";
-                autowoot = false;
+                if(autowoot){
+                	autowoot = false;
+                	updateChat("[#808]"," Autowoot turned off due to mirror");
+                }
                 mirror = false;  
                 updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
     }
