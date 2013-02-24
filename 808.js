@@ -52,7 +52,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
     function voteUpdate(){
         if(mirror && script && API.getUser("50aeb07e96fba52c3ca04ca8").vote === 0){
-            if(debug){console.log("[#808] No Vote registered")}
+            if(debug){setTimeout(function(){console.log("[#808] No Vote registered")}, 500)}
         }
         else if(mirror && script && API.getUser("50aeb07e96fba52c3ca04ca8").vote === 1){
             $("#button-vote-positive").click();
