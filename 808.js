@@ -49,6 +49,10 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
 
 /******************************/
 function command(data) {
+        if (data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        debug = !debug;
+        if(debug){updateChat("[#808] ","Debug mode on")}
+    }
     if (data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(0);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
