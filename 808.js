@@ -72,6 +72,9 @@ function command(data) {
         debug = !debug;
         if(debug){updateChat("[#808] ","Debug mode on")}
     }
+       if (script && data.type === "mention" && data.message.indexOf("-clear") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        API.sendChat("/clear");
+    }
     if (script && data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(0);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
