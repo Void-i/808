@@ -69,23 +69,13 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
 /******************************/
 function command(data) {
-      if (!Recent && script && data.type === "mention" && data.message.indexOf("what are you?"||"what are you"||"what"||"What are you?"||"What are you"||"What") > -1) {
-        setTimeout(function(){API.sendChat("@"+data.username + " What yourself!")},1500);
+      if (!Recent && script && data.type === "mention" && data.message.indexOf("what are you") > -1) {
+        setTimeout(function(){API.sendChat("@"+data.from + " I am derp's alt account!")},1500);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
-        if (!Recent && script && data.type === "mention" && data.message.indexOf("hi"||"hi!"||"Hi"||"Hi!") > -1) {
-        setTimeout(function(){API.sendChat("@"+data.from + " Hey there!")},3000);
-        Recent = true;
-        setTimeout(function(){recent = false;}, 120000);
-    }
-            if (!Recent && script && data.type === "mention" && data.message.indexOf("hey"||"hey!"||"Hey"||"Hey!") > -1) {
+        if (!Recent && script && data.type === "mention" && data.message.indexOf("hey") > -1) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hello!")},3000);
-        Recent = true;
-        setTimeout(function(){recent = false;}, 120000);
-    }
-                if (!Recent && script && data.type === "mention" && data.message.indexOf("hello"||"hello!"||"Hello"||"Hello!") > -1) {
-        setTimeout(function(){API.sendChat("@"+data.from + " Hey!")},3000);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
