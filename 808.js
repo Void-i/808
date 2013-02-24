@@ -92,6 +92,14 @@ function command(data) {
         Models.user.changeStatus(2);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
+      if (script && data.type === "mention" && data.message.indexOf("-meh") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        setTimeout(function(){$("#button-vote-negative").click();},1000);
+        if(debug){updateChat("[#808] ","Mehing Song")}
+    }
+        if (script && data.type === "mention" && data.message.indexOf("-woot") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        setTimeout(function(){$("#button-vote-positive").click();},1000);
+        if(debug){updateChat("[#808] ","Wooting Song")}
+    }
     if (script && data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Auto";
         if(mirror){
