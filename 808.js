@@ -12,11 +12,12 @@ if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromI
 }
 }
 
-debug = false;
-autowoot = false;
-mirror = true;
-weird = true;
-script = true;
+debug = false,
+autowoot = false,
+mirror = true,
+weird = true,
+script = true,
+wootmode = "Mirror";
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -28,6 +29,8 @@ var updateChat = function(from, message){
 };
 
 var joined = new Date().getTime();
+
+
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -91,6 +94,7 @@ function command(data) {
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            wootmode = "Auto";
             mirror = false;
             autowoot = true;
                 if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
@@ -99,15 +103,18 @@ function command(data) {
            API.sendChat("@,DerpTheBass' Pong!");
     }
         if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                wootmode = "Off";
                 autowoot = false;  
                 if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
     }
          if (script && data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                wootmode = "Mirror";
                 autowoot = false;
                 mirror = true;  
                 if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
     }
          if (script && data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                wootmode = "Off";
                 mirror = false;  
                 updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
     }
@@ -124,7 +131,7 @@ function command(data) {
     }
        if (script && data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
          var elapsed = new Date().getTime() - joined;
-         API.sendChat("/em has been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" on "+BrowserDetect.OS+".");
+         API.sendChat("/em has been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug:"+debug);
           if(debug){console.log("Sending status/info")}
     }
 }
