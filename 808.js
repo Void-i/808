@@ -69,14 +69,13 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
 /******************************/
 function command(data) {
-    data.message.toLowerCase();
-      if (!Recent && script && data.type === "mention" && data.message.indexOf("what are you?"||"what are you"||"what") > -1) {
+      if (!Recent && script && data.type === "mention" && data.message.indexOf("what are you?"||"what are you"||"what"||"What are you?"||"What are you"||"What") > -1) {
         setTimeout(function(){API.sendChat("@"+data.username + " What yourself!")},1500);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
-        if (!Recent && script && data.type === "mention" && data.message.indexOf("hi"||"hello"||"hey"||"hi!"||"hello!"||"hey!") > -1) {
-        setTimeout(function(){API.sendChat("@"+data.username + " Hey there!")},3000);
+        if (!Recent && script && data.type === "mention" && data.message.indexOf("hi"||"hello"||"hey"||"hi!"||"hello!"||"hey!"||"Hi"||"Hello"||"Hey"||"Hi!"||"Hello!"||"Hey!") > -1) {
+        setTimeout(function(){API.sendChat("@"+data.from + " Hey there!")},3000);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
