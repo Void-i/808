@@ -1,7 +1,21 @@
+API.addEventListener(API.CHAT, callback);
+function callback(data){
+if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    script = false;
+    Models.user.changeStatus(-1);
+    }
+}
+if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    script = true;
+    Models.user.changeStatus(-1);
+    }
+}
+
 debug = false;
 autowoot = false;
 mirror = true;
 weird = true;
+script = true;
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -14,6 +28,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 /******************************/
+if(script){
 API.addEventListener(API.CHAT, command);
 
 API.addEventListener(API.DJ_ADVANCE, DJAdvance);
@@ -233,4 +248,4 @@ var BrowserDetect = {
 
 };
 BrowserDetect.init();
-
+}
