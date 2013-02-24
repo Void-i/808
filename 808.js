@@ -50,7 +50,7 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
         }  
     }
 }
-if(weird && day = 5 || 6){
+if(weird){
 setInterval(function(){
 if(day = 6){
 	API.sendChat("/em It's play anything day for the next 24 hours!");
