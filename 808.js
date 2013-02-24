@@ -116,8 +116,10 @@ function command(data) {
         autowoot = true;
         if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
     }
-    if (script && data.message.indexOf("-ping") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (!Recent && script && data.message.indexOf("-ping") > -1) {
         API.sendChat("@,DerpTheBass' Pong!");
+                Recent = true;
+        setTimeout(function(){recent = false;}, 60000);
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
