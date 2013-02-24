@@ -12,9 +12,9 @@ var updateChat = function(from, message){
     })
 };
 
-var joined = new Date().getDay();
+var joined = new Date().getTime();
 
-var day = new Date();
+var day = new Date().getDay();
 /******************************/
 API.addEventListener(API.CHAT, command);
 
