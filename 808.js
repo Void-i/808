@@ -67,7 +67,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
 /******************************/
 function command(data) {
-      if (!Recent && script && data.type === "mention" && data.message.toLowerCase().indexOf("hi") > -1) {
+      if (script && !Recent && data.type === "mention" && data.message.toLowerCase().indexOf("hi") > -1) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
@@ -116,9 +116,9 @@ function command(data) {
         autowoot = true;
         if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
     }
-    if (!Recent && script && data.message.indexOf("-ping") > -1) {
-        API.sendChat("@,DerpTheBass' Pong!");
-                Recent = true;
+    if (script && !Recent && data.message.indexOf("-ping") > -1) {
+        API.sendChat("@"+data.from+" Pong!");
+         Recent = true;
         setTimeout(function(){recent = false;}, 60000);
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
