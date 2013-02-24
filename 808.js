@@ -68,7 +68,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 /******************************/
 function command(data) {
       if (!Recent && script && data.type === "mention" && data.message.indexOf("Hi") > -1) {
-        setTimeout(function(){API.sendChat("@"+data.username + " Hey sexy")},1500);
+        setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
