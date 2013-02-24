@@ -74,8 +74,18 @@ function command(data) {
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
-        if (!Recent && script && data.type === "mention" && data.message.indexOf("hi"||"hello"||"hey"||"hi!"||"hello!"||"hey!"||"Hi"||"Hello"||"Hey"||"Hi!"||"Hello!"||"Hey!") > -1) {
+        if (!Recent && script && data.type === "mention" && data.message.indexOf("hi"||"hi!"||"Hi"||"Hi!") > -1) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hey there!")},3000);
+        Recent = true;
+        setTimeout(function(){recent = false;}, 120000);
+    }
+            if (!Recent && script && data.type === "mention" && data.message.indexOf("hey"||"hey!"||"Hey"||"Hey!") > -1) {
+        setTimeout(function(){API.sendChat("@"+data.from + " Hello!")},3000);
+        Recent = true;
+        setTimeout(function(){recent = false;}, 120000);
+    }
+                if (!Recent && script && data.type === "mention" && data.message.indexOf("hello"||"hello!"||"Hello"||"Hello!") > -1) {
+        setTimeout(function(){API.sendChat("@"+data.from + " Hey!")},3000);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
     }
