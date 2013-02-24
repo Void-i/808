@@ -2,10 +2,12 @@ API.addEventListener(API.CHAT, callback);
 function callback(data){
 if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
     script = false;
+    console.log("[#808] at idle")
     Models.user.changeStatus(3);
 }
 if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
     script = true;
+    console.log("[#808] started")
     Models.user.changeStatus(0);
 }
 }
