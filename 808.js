@@ -3,12 +3,10 @@ function callback(data){
 if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
     script = false;
     Models.user.changeStatus(3);
-    }
 }
 if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
     script = true;
     Models.user.changeStatus(0);
-    }
 }
 
 debug = false;
