@@ -14,7 +14,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-var day = new Date();
+var day = new Date().getDay;
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -50,7 +50,7 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
         }  
     }
 }
-if(day = 5){
+if(day === 5){
 setInterval(function(){
 if(day === 5 && weird){
 	API.sendChat("/em It's play anything day for the next 24 hours!");
