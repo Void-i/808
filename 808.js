@@ -108,7 +108,7 @@ function command(data) {
         updateChat("[#808] ","Username changed by ,DerpTheBass'");
     }
        if (data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-          API.sendChat("/em has been running for "+elapsed/100000+" minutes."+" Running on "+BrowserDetect.browser+" on"+BrowserDetect.OS+".");
+          API.sendChat("/em has been running for "+elapsed/100000+" minutes."+" Running on "+BrowserDetect.browser+" on "+BrowserDetect.OS+".");
           if(debug){console.log("Sending status/info")}
     }
 }
