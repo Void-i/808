@@ -67,11 +67,11 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 
 /******************************/
 function command(data) {
-     /* if (!Recent && script && data.type === "mention" && data.message.indexOf("What are you") > -1) {
-        setTimeout(function(){API.sendChat("@"+data.username + " What yourself!")},1500);
+      if (!Recent && script && data.type === "mention" && data.message.indexOf("Hi") > -1) {
+        setTimeout(function(){API.sendChat("@"+data.username + " Hey sexy")},1500);
         Recent = true;
         setTimeout(function(){recent = false;}, 120000);
-    }*/
+    }
     if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
         if(debug){updateChat("[#808] ","Debug mode on")}
