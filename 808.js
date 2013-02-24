@@ -8,6 +8,7 @@ if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromI
     script = true;
     Models.user.changeStatus(0);
 }
+}
 
 debug = false;
 autowoot = false;
