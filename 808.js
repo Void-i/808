@@ -1,7 +1,7 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
 if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-    script = false;
+    script = false,
     console.log("[#808] at idle")
     Models.user.changeStatus(3);
 }
@@ -15,7 +15,6 @@ if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromI
 debug = false,
 autowoot = false,
 mirror = true,
-weird = true,
 script = true,
 wootmode = "Mirror";
 
@@ -44,14 +43,14 @@ API.addEventListener(API.VOTE_UPDATE, voteUpdate);
 
 setTimeout(function(){Models.user.changeStatus(0)},2000);
 
-if(autowoot && script){
+if(script && autowoot){
     function DJAdvance(){
         setTimeout(function(){$("#button-vote-positive").click();},5000);
         if(debug){console.log("[#808] Autowooting song")}
     }
 }
 
-if(mirror && script){
+if(script && mirror){
 function voteUpdate(){
 if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === 0){
     if(debug){console.log("[#808] No Vote registered")}
@@ -104,6 +103,7 @@ function command(data) {
     }
         if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 wootmode = "Off";
+                mirror = false;
                 autowoot = false;  
                 if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
     }
@@ -115,6 +115,7 @@ function command(data) {
     }
          if (script && data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 wootmode = "Off";
+                autowoot = false;
                 mirror = false;  
                 updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
     }
