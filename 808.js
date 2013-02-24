@@ -11,6 +11,8 @@ var updateChat = function(from, message){
     })
 };
 
+var joined = new Date().getTime();
+var elapsed = new Date().getTime() - joined;
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -104,6 +106,9 @@ function command(data) {
     if (data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
         Models.user.changeDisplayName(RegExp.$1);
         updateChat("[#808] ","Username changed by ,DerpTheBass'");
+    }
+       if (data.type === "mention" && data.message.indexOf("-status") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+          API.sendChat("/em has been running for "+elapsed/100000+" minutes");
     }
 }
 
