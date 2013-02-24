@@ -12,7 +12,7 @@ var updateChat = function(from, message){
     })
 };
 
-var joined = new Date().getTime();
+var joined = new Date().getDay();
 
 var day = new Date();
 /******************************/
