@@ -33,36 +33,36 @@ var joined = new Date().getTime();
 /******************************/
 API.addEventListener(API.CHAT, command);
 
+API.addEventListener(API.VOTE_UPDATE, voteUpdate);
+
+API.addEventListener(API.DJ_ADVANCE, DJAdvance);
+
 //setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
 
 console.log("[#808] Running #808 Alt control script");
 
 setTimeout(function(){Models.user.changeStatus(0)},2000);
-
-if(script && autowoot){
-    API.addEventListener(API.DJ_ADVANCE, DJAdvance);
+    
     function DJAdvance(){
+        if(script && autowoot){
         setTimeout(function(){$("#button-vote-positive").click();},5000);
         if(debug){console.log("[#808] Autowooting song")}
     }
 }
 
-if(script && mirror){
-    API.addEventListener(API.VOTE_UPDATE, voteUpdate);
     function voteUpdate(){
-        if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === 0){
+        if(mirror && script && API.getUser("50aeb07e96fba52c3ca04ca8").vote === 0){
             if(debug){console.log("[#808] No Vote registered")}
         }
-        else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === 1){
+        else if(mirror && script && API.getUser("50aeb07e96fba52c3ca04ca8").vote === 1){
             $("#button-vote-positive").click();
             if(debug){console.log("[#808] Mirroring 'woot' Vote")}
         }
-        else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
+        else if(mirror && script && API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
             $("#button-vote-negative").click();
             if(debug){console.log("[#808] Mirroring 'meh' Vote")}
         }
     }
-}
     
 
 
