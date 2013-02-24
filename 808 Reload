@@ -1,0 +1,7 @@
+      API.addEventListener(API.CHAT, callback);
+function callback(a){
+if (script && a.type === "mention" && a.message.indexOf("-reload") > -1 && a.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            Models.user.changeStatus(1);
+            setTimeout(function(){document.location.reload(true)},3000);
+        }
+}
