@@ -50,14 +50,14 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
         }  
     }
 }
-
+if(weird){
 setInterval(function(){
 if(day = 5 && weird){
 	API.sendChat("/em It's play anything day for the next 24 hours!");
 	weird = false;
         }
 }, 30000);
-
+}
 /******************************/
 function command(data) {
         if (data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
