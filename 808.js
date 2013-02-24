@@ -1,6 +1,7 @@
 debug = false;
 autowoot = false;
 mirror = true;
+weird = true;
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -50,8 +51,9 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
     }
 }
 setInterval(function(){
-if(day = 5){
+if(day = 6 && weird){
 	console.log("It's weird day!");
+	weird = false;
         }
 }, 30000);
 /******************************/
