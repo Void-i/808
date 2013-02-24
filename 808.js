@@ -51,44 +51,44 @@ else if(API.getUser("50aeb07e96fba52c3ca04ca8").vote === -1){
 function command(data) {
     if (data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(0);
-        if(debug){updateChat("[#808]","Status changed by ,DerpTheBass'")}
+        if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
     if (data.type === "mention" && data.message.indexOf("-afk" || "-away" || "-brb") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(1);
-        if(debug){updateChat("[#808]","Status changed by ,DerpTheBass'")}
+        if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
     if (data.type === "mention" && data.message.indexOf("-sleeping" || "-sleep") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(3);
-        if(debug){updateChat("[#808]","Status changed by ,DerpTheBass'")}
+        if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
     if (data.type === "mention" && data.message.indexOf("-idle" || "-gaming") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(-1);
-        if(debug){updateChat("[#808]","Status changed by ,DerpTheBass'")}
+        if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
     if (data.type === "mention" && data.message.indexOf("-working" || "-work") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(2);
-        if(debug){updateChat("[#808]","Status changed by ,DerpTheBass'")}
+        if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
     if (data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             mirror = false;
             autowoot = true;
-                if(debug){updateChat("[#808]","Autowoot turned on by ,DerpTheBass'")}
+                if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
     }
        if (data.message.indexOf("-ping") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
            API.sendChat("@,DerpTheBass' Pong!");
     }
         if (data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 autowoot = false;  
-                if(debug){updateChat("[#808]","Autowoot turned off by ,DerpTheBass'")}
+                if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
     }
          if (data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 autowoot = false;
                 mirror = true;  
-                if(debug){updateChat("[#808]","Mirror vote turned on by ,DerpTheBass'")}
+                if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
     }
          if (data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
                 mirror = false;  
-                updateChat("[#808]","Mirror vote turned off by ,DerpTheBass'");
+                updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
     }
       if (data.type === "mention" && data.message.indexOf("-reload") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
           Models.user.changeStatus(1);
@@ -99,7 +99,7 @@ function command(data) {
     }*/
     if (data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
         Models.user.changeDisplayName(RegExp.$1);
-        updateChat("[#808]","Username changed by ,DerpTheBass'");
+        updateChat("[#808] ","Username changed by ,DerpTheBass'");
     }
 }
 
