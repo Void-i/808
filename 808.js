@@ -70,7 +70,7 @@ function command(data) {
       if (script && !Recent && data.type === "mention" && data.message.indexOf("Hi") > -1) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
         Recent = true;
-        setTimeout(function(){recent = false;}, 60000);
+        setTimeout(function(){Recent = false;}, 60000);
     }
     if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
@@ -119,7 +119,7 @@ function command(data) {
     if (script && !Recent && data.message.indexOf("-ping") > -1) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
-        setTimeout(function(){recent = false;}, 60000);
+        setTimeout(function(){Recent = false;}, 60000);
         updateChat("","Pong");
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
