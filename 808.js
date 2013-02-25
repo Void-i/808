@@ -72,6 +72,11 @@ function command(data) {
         Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
     }
+          if (script && !Recent && data.type === "mention" && data.message.indexOf("hi") > -1) {
+        setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
+        Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+    }
     if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
         if(debug){updateChat("[#808] ","Debug mode on")}
