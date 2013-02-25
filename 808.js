@@ -125,7 +125,7 @@ function command(data) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
-        updateChat("","Pong");
+        updateChat("[#808] ","Pong");
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
@@ -164,7 +164,7 @@ function command(data) {
         if (script && data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("/em has been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug);
-            if(debug){console.log("Sending status/info")}
+            if(debug){console.log("[#808] Sending status/info")}
         }
     }
 
