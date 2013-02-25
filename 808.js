@@ -70,7 +70,7 @@ function command(data) {
       if (script && !Recent && data.type === "mention" && data.message.indexOf("Hi") > -1) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
         Recent = true;
-        setTimeout(function(){recent = false;}, 120000);
+        setTimeout(function(){recent = false;}, 60000);
     }
     if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
