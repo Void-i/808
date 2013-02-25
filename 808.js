@@ -120,6 +120,7 @@ function command(data) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
         setTimeout(function(){recent = false;}, 60000);
+        updateChat("","Pong");
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
