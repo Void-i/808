@@ -32,6 +32,15 @@ var updateChat = function(from, message){
 };
 
 var joined = new Date().getTime();
+
+if(API.getSelf().vote === 1){
+	vote = "Woot";
+}else if(API.getSelf().vote === -1){
+	vote = "Meh";
+}else{
+	vote = "None";
+}
+
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -166,7 +175,7 @@ function command(data) {
         }
         if (data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var elapsed = new Date().getTime() - joined;
-            API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+" Status: "+status);
+            API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+" Vote: "+vote+" Debug: "+debug+" Status: "+status);
             if(debug){console.log("[#808] Sending status/info")}
         }
     }
