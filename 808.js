@@ -2,11 +2,13 @@ API.addEventListener(API.CHAT, callback);
 function callback(data){
     if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         script = false,
+        status = "At idle";
             console.log("[#808] at idle");
         Models.user.changeStatus(3);
     }
     if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         script = true;
+        status = "Running";
         console.log("[#808] started");
         Models.user.changeStatus(0);
     }
@@ -18,6 +20,7 @@ mirror = true;
 script = true;
 wootmode = "Mirror";
 Recent = false;
+status = "Running";
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -161,9 +164,9 @@ function command(data) {
             Models.user.changeDisplayName(RegExp.$1);
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
-        if (script && data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var elapsed = new Date().getTime() - joined;
-            API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug);
+            API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+" Status: ");
             if(debug){console.log("[#808] Sending status/info")}
         }
     }
