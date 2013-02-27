@@ -33,14 +33,19 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-if(API.getSelf().vote === 1){
-	vote = "Woot";
-}else if(API.getSelf().vote === -1){
-	vote = "Meh";
-}else{
-	vote = "None";
-}
+        var votecode = API.getUser(uid).vote;
 
+        switch(votecode){
+            case 0:
+                var vote = "Undecided";
+                break;
+            case -1:
+                var vote = "Meh";
+                break;
+            case 1:
+                var vote = "Woot";
+                break;
+        }
 /******************************/
 API.addEventListener(API.CHAT, command);
 
