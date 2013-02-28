@@ -33,7 +33,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-        var votecode = API.getUser(uid).vote;
+        var votecode = API.getUser().vote;
 
         switch(votecode){
             case 0:
