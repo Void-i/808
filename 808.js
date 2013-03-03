@@ -130,6 +130,12 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 60000);
         updateChat("[#808] ","Pong");
     }
+        if (script && !Recent && data.message.indexOf("-pong") > -1) {
+        API.sendChat("I heard that "+data.from+" likes little asian boys.");
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+        updateChat("[#808] ","lelelelele");
+    }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
         if(mirror){
