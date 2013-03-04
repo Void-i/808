@@ -127,6 +127,7 @@ function command(data) {
         if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
     }
      if (script && data.type === "mention" && data.message.indexOf("-curate") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            var playlistID = Models.playlist.getSelected().id
             new DJCurateService(playlistID);
             setTimeout(function(){Dialog.closeDialog();}, 1000);
             if(debug){updateChat("[#808] ","Added to current playlist")}
