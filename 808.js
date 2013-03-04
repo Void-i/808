@@ -129,9 +129,6 @@ function command(data) {
      if (script && data.type === "mention" && data.message.indexOf("-curate") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             new DJCurateService(playlistID);
             setTimeout(function(){Dialog.closeDialog();}, 1000);
-        return true;
-    }
-    i
             if(debug){updateChat("[#808] ","Added to current playlist")}
         }
     if (script && !Recent && data.message.indexOf("-ping") > -1) {
