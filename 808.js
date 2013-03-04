@@ -32,8 +32,6 @@ var updateChat = function(from, message){
 };
 
 var joined = new Date().getTime();
-
-var playlistID = Models.playlist.getSelected().id
 /******************************/
 API.addEventListener(API.CHAT, command);
 
