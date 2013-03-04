@@ -32,6 +32,8 @@ var updateChat = function(from, message){
 };
 
 var joined = new Date().getTime();
+
+var playlistID = Models.playlist.getSelected().id
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -124,6 +126,14 @@ function command(data) {
         autowoot = true;
         if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
     }
+     if (script && data.type === "mention" && data.message.indexOf("-curate") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            new DJCurateService(playlistID);
+            setTimeout(function(){Dialog.closeDialog();}, 1000);
+        return true;
+    }
+    i
+            if(debug){updateChat("[#808] ","Added to current playlist")}
+        }
     if (script && !Recent && data.message.indexOf("-ping") > -1) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
