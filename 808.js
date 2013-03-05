@@ -34,6 +34,12 @@ var updateChat = function(from, message){
 var joined = new Date().getTime();
 
 var oldDJs = [];
+
+localStorage.setItem("DJS", JSON.stringify(oldDJs));
+
+var stringifiedDJs = localStorage.getItem("DJs");
+
+var storedDJs = JSON.parse(stringifiedDJs);
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -68,32 +74,13 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
         }
     }
     
-/*API.addEventListener(API.DJ_ADVANCE, newDJ);
-function newDJ(){
-	    function searchStringInArray (str, strArray) {
-    for (var j=0; j<strArray.length; j++) {
-        if (strArray[j].match(str)) return true;
-        else return false;
-    }
-}
-    
-	var storedIDs=JSON.parse(localStorage["oldDJs"]);
-	if(searchStringInArray(API.getDJs()[4].id, oldDJs) === false){
-		oldDJs.push(API.getDJs()[4].id);
-		localStorage.setItem()
-		if(debug) console.log("[#808] Added "+API.getDJs()[4].id+" to array");
-	}
-}*/
-
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
+	if(storedDJs.indexOf(API.getDJs()[4].id) != -1){
 	oldDJs.push(API.getDJs()[4].id);
-	localStorage.setItem("DJs", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
-	var storedData = localStorage.getItem("DJs");
-        if (storedData) {
-         DJs = JSON.parse(storedData);
-        }
+	API.sendChat("@"+API.getDJs()[4].username+)
+	}
 }
 
 /******************************/
