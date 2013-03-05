@@ -90,7 +90,10 @@ function newdj(){
 	oldDJs.push(API.getDJs()[4].id);
 	localStorage.setItem("DJs", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
-        storedDJs = JSON.parse(DJs);
+	var storedData = localStorage.getItem("DJs");
+        if (storedData) {
+         DJs = JSON.parse(storedData);
+        }
 }
 
 /******************************/
