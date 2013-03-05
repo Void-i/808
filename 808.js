@@ -77,6 +77,13 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     
 API.addEventListener(API.DJ_ADVANCE, newDJ);
 function newDJ(){
+	    function searchStringInArray (str, strArray) {
+    for (var j=0; j<strArray.length; j++) {
+        if (strArray[j].match(str)) return true;
+        else return false;
+    }
+}
+    
 	var storedIDs=JSON.parse(localStorage["oldDJs"]);
 	if(searchStringInArray(API.getDJs()[4].id, oldDJs) === false){
 		oldDJs.push(API.getDJs()[4].id);
