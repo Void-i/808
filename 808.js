@@ -32,7 +32,7 @@ var updateChat = function(from, message){
 };
 
 var joined = new Date().getTime();
-if(localStorage.getItem("firstRun") != no){
+if(localStorage.getItem("firstRun") != "no"){
 	var oldDJs = [];
 }else{
 	var oldDJs = JSON.parse(localStorage.getItem("DJS"));
