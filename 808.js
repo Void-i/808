@@ -36,6 +36,7 @@ var joined = new Date().getTime();
 var oldDJs = ["1"];
 var stringifiedDJs = localStorage.getItem("DJs");
 var storedDJs = JSON.parse(stringifiedDJs);
+localStorage.setItem("DJS", JSON.stringify(oldDJs));
 /******************************/
 API.addEventListener(API.CHAT, command);
 
