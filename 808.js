@@ -87,6 +87,7 @@ function newDJ(){
 
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
+	oldDJs.push(API.getDJs()[4].id);
 	console.log("[#808] New DJ");
 	
 }
