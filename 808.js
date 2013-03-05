@@ -77,7 +77,7 @@ function newdj(){
 	oldDJs.push(API.getDJs()[4].id);
 	localStorage.setItem("DJS", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
-	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you in the booth before, keep in mind that non-pony songs will be skipped.")
+	API.sendChat("@"+API.getDJs()[4].username+" This is a test")
 	}
 }
 
