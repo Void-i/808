@@ -33,10 +33,8 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-var oldDJs = ["1"];
 var stringifiedDJs = localStorage.getItem("DJs");
-var storedDJs = JSON.parse(stringifiedDJs);
-localStorage.setItem("DJS", JSON.stringify(oldDJs));
+var oldDJs = JSON.parse(stringifiedDJs);
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -77,7 +75,7 @@ function newdj(){
 	oldDJs.push(API.getDJs()[4].id);
 	localStorage.setItem("DJS", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
-	API.sendChat("@"+API.getDJs()[4].username+" This is a test")
+	//API.sendChat("@"+API.getDJs()[4].username+" This is a test")
 	}
 }
 
