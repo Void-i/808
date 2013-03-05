@@ -73,16 +73,16 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
             if(debug){console.log("[#808] Mirroring 'meh' Vote")}
         }
     }
-if(script){    
+   
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
-	if(storedDJs.indexOf(API.getDJs()[4].id) != -1){
+	if(script && storedDJs.indexOf(API.getDJs()[4].id) != -1){
 	oldDJs.push(API.getDJs()[4].id);
 	console.log("[#808] New DJ");
 	API.sendChat("@"+API.getDJs()[4].username+" This is a test")
 	}
 }
-}
+
 /******************************/
 function command(data) {
       if (script && !Recent && data.type === "mention" && data.message.indexOf("Hi") > -1) {
