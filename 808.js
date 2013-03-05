@@ -74,7 +74,6 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
 	if(oldDJs.indexOf(API.getDJs()[4].id) === -1){
-	JSON.parse(localStorage.getItem("DJS")).push(API.getDJs()[4].id);
 	oldDJs.push(API.getDJs()[4].id);
         localStorage.setItem("DJS", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
