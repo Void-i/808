@@ -85,6 +85,11 @@ function newDJ(){
 	}
 }*/
 
+API.addEventListener(API.DJ_ADVANCE, newdj);
+function newdj(){
+	console.log("[#808] New DJ");
+	
+}
 /******************************/
 function command(data) {
       if (script && !Recent && data.type === "mention" && data.message.indexOf("Hi") > -1) {
