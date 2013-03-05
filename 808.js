@@ -79,7 +79,7 @@ function newdj(){
 	if(storedDJs.indexOf(API.getDJs()[4].id) != -1){
 	oldDJs.push(API.getDJs()[4].id);
 	console.log("[#808] New DJ");
-	API.sendChat("@"+API.getDJs()[4].username+)
+	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you in the booth before, keep in mind that non-pony songs will be skipped.")
 	}
 }
 
