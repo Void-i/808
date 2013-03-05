@@ -34,6 +34,8 @@ var updateChat = function(from, message){
 var joined = new Date().getTime();
 
 var oldDJs = ["1"];
+var stringifiedDJs = localStorage.getItem("DJs");
+var storedDJs = JSON.parse(stringifiedDJs);
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -70,10 +72,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
-var stringifiedDJs = localStorage.getItem("DJs");
-var storedDJs = JSON.parse(stringifiedDJs);
-
-	if(storedDJs.indexOf(API.getDJs()[4].id) === -1){
+	if(DJs.indexOf(API.getDJs()[4].id) === -1){
 	oldDJs.push(API.getDJs()[4].id);
 	localStorage.setItem("DJS", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
