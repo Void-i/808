@@ -79,7 +79,8 @@ API.addEventListener(API.DJ_ADVANCE, newDJ);
 function newDJ(){
 	var storedIDs=JSON.parse(localStorage["oldDJs"]);
 	if(searchStringInArray(API.getDJs()[4].id, oldDJs) === false){
-		localStorage["oldDJs"]=JSON.stringify(API.getDJs()[4].id);
+		oldDJs.push(API.getDJs()[4].id);
+		localStorage["oldDJs"]=JSON.stringify(oldDJs);
 		if(debug) console.log("[#808] Added "+API.getDJs()[4].id+" to array");
 	}
 }
