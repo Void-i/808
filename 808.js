@@ -33,6 +33,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
+var oldDJs = ["1"];
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -42,7 +43,7 @@ API.addEventListener(API.DJ_ADVANCE, DJAdvance);
 
 //setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
 
-console.log("[#808] Running #808 Alt control script V. 13");
+console.log("[#808] Running #808 Alt control script V. 14");
 
 setTimeout(function(){Models.user.changeStatus(0)},2000);
     
@@ -69,13 +70,12 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
-var oldDJs = ["1"];
-localStorage.setItem("DJS", JSON.stringify(oldDJs));
 var stringifiedDJs = localStorage.getItem("DJs");
 var storedDJs = JSON.parse(stringifiedDJs);
 
 	if(storedDJs.indexOf(API.getDJs()[4].id) === -1){
 	oldDJs.push(API.getDJs()[4].id);
+	localStorage.setItem("DJS", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
 	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you in the booth before, keep in mind that non-pony songs will be skipped.")
 	}
