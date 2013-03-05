@@ -33,7 +33,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-var oldDJs = ["1"];
+var oldDJs = [];
 
 localStorage.setItem("DJS", JSON.stringify(oldDJs));
 
@@ -73,13 +73,13 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
             if(debug){console.log("[#808] Mirroring 'meh' Vote")}
         }
     }
-   
+    
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
 	if(storedDJs.indexOf(API.getDJs()[4].id) != -1){
 	oldDJs.push(API.getDJs()[4].id);
 	console.log("[#808] New DJ");
-	API.sendChat("@"+API.getDJs()[4].username+" This is a test")
+	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you in the booth before, keep in mind that non-pony songs will be skipped.")
 	}
 }
 
@@ -137,7 +137,7 @@ function command(data) {
             if(debug){updateChat("[#808] ","Mirror turned off due to autowoot")}
         }
         autowoot = true;
-        if(debug){updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'")}
+        if(debug) updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'");
     }
      if (script && data.type === "mention" && data.message.indexOf("-curate") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var playlistID = Models.playlist.getSelected().id
@@ -149,13 +149,13 @@ function command(data) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
-        if(debug) updateChat("[#808] ","Pong");
+        updateChat("[#808] ","Pong");
     }
         if (script && !Recent && data.message.indexOf("-pong") > -1) {
         API.sendChat("I heard that "+data.from+" likes little asian boys.");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
-       if(debug) updateChat("[#808] ","lelelelele");
+        updateChat("[#808] ","lelelelele");
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
