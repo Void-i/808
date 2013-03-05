@@ -76,7 +76,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
    
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
-	if(script && storedDJs.indexOf(API.getDJs()[4].id) != -1){
+	if(storedDJs.indexOf(API.getDJs()[4].id) != -1){
 	oldDJs.push(API.getDJs()[4].id);
 	console.log("[#808] New DJ");
 	API.sendChat("@"+API.getDJs()[4].username+" This is a test")
