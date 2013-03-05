@@ -33,13 +33,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-localStorage.setItem("DJS", JSON.stringify(oldDJs));
-
-if(localStorage.getItem("firstRun") != "no"){
-	var oldDJs = [];
-}else{
-	var oldDJs = JSON.parse(localStorage.getItem("DJS"));
-}
+var oldDJs = JSON.parse(localStorage.getItem("storedDJs"));
 /******************************/
 API.addEventListener(API.CHAT, command);
 
@@ -78,7 +72,7 @@ API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
 	if(oldDJs.indexOf(API.getDJs()[4].id) === -1){
 	oldDJs.push(API.getDJs()[4].id);
-        localStorage.setItem("DJS", JSON.stringify(oldDJs));
+        localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
 	console.log("[#808] New DJ");
 	//API.sendChat("@"+API.getDJs()[4].username+" This is a test")
 	}
@@ -318,5 +312,3 @@ function command(data) {
 
 };
 BrowserDetect.init();
-
-localStorage.setItem("firstRun", "no");
