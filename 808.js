@@ -33,7 +33,7 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-var oldDJs = [];
+var oldDJs = ["1"];
 
 localStorage.setItem("DJS", JSON.stringify(oldDJs));
 
