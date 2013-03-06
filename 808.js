@@ -2,12 +2,14 @@ API.addEventListener(API.CHAT, callback);
 function callback(data){
     if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         script = false,
+        API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[#808] at idle");
         Models.user.changeStatus(3);
     }
     if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         script = true;
+        API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
         console.log("[#808] started");
         Models.user.changeStatus(0);
@@ -73,8 +75,8 @@ function newdj(){
 	if(oldDJs.indexOf(API.getDJs()[4].id) === -1){
 	oldDJs.push(API.getDJs()[4].id);
         localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
-	console.log("[#808] New DJ");
-	//API.sendChat("@"+API.getDJs()[4].username+" This is a test")
+	if(debug) console.log("[#808] New DJ");
+	API.sendChat("@"+API.getDJs()[4].username+" This is a test");
 	}
 }
 
@@ -84,11 +86,13 @@ function command(data) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
         Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
+        if (debug) console.log("Returning message");
     }
           if (script && !Recent && data.type === "mention" && data.message.indexOf("hi") > -1) {
         setTimeout(function(){API.sendChat("@"+data.from + " Hey sexy")},1500);
         Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
+        if (debug) console.log("Returning message");
     }
     if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
@@ -144,19 +148,19 @@ function command(data) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
-        updateChat("[#808] ","Pong");
+        if (debug) updateChat("[#808] ","Pong");
     }
         if (script && !Recent && data.message.indexOf("-pong") > -1) {
         API.sendChat("I heard that "+data.from+" likes little asian boys.");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
-        updateChat("[#808] ","lelelelele");
+        if (debug) updateChat("[#808] ","lelelelele");
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
         if(mirror){
             mirror = false;
-            updateChat("[#808} ","Mirror turned of due to autowoot")
+            if(debug) updateChat("[#808} ","Mirror turned of due to autowoot");
         }
             autowoot = false;
             if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
@@ -164,7 +168,7 @@ function command(data) {
         if (script && data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             wootmode = "Mirror";
             if(autowoot){
-                updateChat("[#808} ","Autowoot turned off due to mirror");
+                if(debug) updateChat("[#808} ","Autowoot turned off due to mirror");
                 autowoot = false;
             }
             mirror = true;
@@ -174,10 +178,10 @@ function command(data) {
             wootmode = "Off";
             if(autowoot){
                 autowoot = false;
-                updateChat("[#808]"," Autowoot turned off due to mirror");
+                if(debug) updateChat("[#808]"," Autowoot turned off due to mirror");
             }
             mirror = false;
-            updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
+            if(debug) updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
         }
         /*if (data.type === "mention" && data.message.indexOf("-leave") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
          setTimeout(function(){window.close},2000);
