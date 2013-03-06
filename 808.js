@@ -82,7 +82,7 @@ function newdj(){
 	oldDJs.push(API.getDJs()[4].id);
         localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
 	if(debug) console.log("[#808] New DJ");
-	API.sendChat("@"+API.getDJs()[4].username+" I've never seen you DJ here before, keep in mind only pony music is allowed. Music guidlines: 'thisisatest' ");
+	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you DJ here before, keep in mind only pony music is allowed. Music guidlines: 'thisisatest' ");
 	}
 }
 
