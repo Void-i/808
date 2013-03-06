@@ -35,10 +35,10 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
-if(runBefore != yes){
+/*Run this code if this is the first time the script has been started
 	oldDJs = [];
 	localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
-}
+*/
 
 
 var oldDJs = JSON.parse(localStorage.getItem("storedDJs"));
