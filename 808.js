@@ -35,6 +35,12 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
+if(runBefore != yes){
+	oldDJs = [];
+	localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
+}
+
+
 var oldDJs = JSON.parse(localStorage.getItem("storedDJs"));
 /******************************/
 API.addEventListener(API.CHAT, command);
