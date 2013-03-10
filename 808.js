@@ -1,13 +1,13 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
-    if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (data.type === "mention" && data.message.indexOf("-stop" || "808, go into sleep mode") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[#808] at idle");
         Models.user.changeStatus(3);
     }
-    if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (data.type === "mention" && data.message.indexOf("-start" || "808, start up") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         script = true;
         API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
