@@ -35,6 +35,22 @@ var updateChat = function(from, message){
 
 var joined = new Date().getTime();
 
+var d = new Date();
+var weekday = new Array(7);
+weekday[0]="Sunday";
+weekday[1]="Monday";
+weekday[2]="Tuesday";
+weekday[3]="Wednesday";
+weekday[4]="Thursday";
+weekday[5]="Friday";
+weekday[6]="Saturday";
+
+if(weekday === "Sunday"){
+	weird = "Yes, it is play anything day";
+}else{
+      weird = "No, It is not play anything day";
+}
+
 /*Run this code if this is the first time the script has been started
 	oldDJs = [];
 	localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
@@ -155,6 +171,17 @@ function command(data) {
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
         if (debug) updateChat("[#808] ","Pong");
+    }
+       if (script && !Recent && data.message.indexOf("Is it play anything day?") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+        if (debug) updateChat("[#808] ","@"+data.from+" "+weird);
+    }
+           if (script && !Recent && data.message.indexOf("Is it play anything day") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
     }
         if (script && !Recent && data.message.indexOf("-pong") > -1) {
         API.sendChat("I heard that "+data.from+" likes little asian boys.");
