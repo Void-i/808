@@ -46,9 +46,9 @@ weekday[5]="Friday";
 weekday[6]="Saturday";
 
 if(weekday === "Sunday"){
-	weird = "Yes, it is play anything day";
+	weird = "Yes, it is weird/play anything day";
 }else{
-      weird = "No, It is not play anything day";
+      weird = "No, It is not weird/play anything day";
 }
 
 /*Run this code if this is the first time the script has been started
@@ -172,13 +172,13 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 60000);
         if (debug) updateChat("[#808] ","Pong");
     }
-       if (script && !Recent && data.message.indexOf("Is it play anything day?") > -1) {
+       if (script && !Recent && data.message.indexOf("is it weird day") > -1) {
         API.sendChat("@"+data.from+" "+weird);
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
         if (debug) updateChat("[#808] ","@"+data.from+" "+weird);
     }
-           if (script && !Recent && data.message.indexOf("Is it play anything day") > -1) {
+           if (script && !Recent && data.message.indexOf("is it play anything day") > -1) {
         API.sendChat("@"+data.from+" "+weird);
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
