@@ -270,11 +270,27 @@ function command(data) {
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
     }
+               if (script && !Recent && data.message.indexOf("is today weird day") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+    }
+                   if (script && !Recent && data.message.indexOf("is today play anything day") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+    }
         if (script && !Recent && data.message.indexOf("-pong") > -1) {
         API.sendChat("I heard that "+data.from+" likes little asian boys.");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
         if (debug) updateChat("[#808] ","lelelelele");
+    }
+            if (script && !Recent && data.message.indexOf("-bassplug") > -1) {
+        API.sendChat("@"+data.from+" http://code.derpthebass.com/bassplug");
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+        if (debug) updateChat("[#808] ","Sending bassplug");
     }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
