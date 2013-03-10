@@ -249,6 +249,16 @@ function command(data) {
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
     }
+               if (script && !Recent && data.message.indexOf("so its weird day now") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+    }
+                   if (script && !Recent && data.message.indexOf("so its play anything day now") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+    }
            if (script && !Recent && data.message.indexOf("Is it weird day") > -1) {
         API.sendChat("@"+data.from+" "+weird);
          Recent = true;
