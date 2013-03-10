@@ -37,6 +37,7 @@ script = true;
 wootmode = "Mirror";
 Recent = false;
 status = "Running";
+announce = false;
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -131,12 +132,33 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 60000);
         if (debug) console.log("Returning message");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-debug" || "808, turn debug mode on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         debug = !debug;
-        if(debug){updateChat("[#808] ","Debug mode on")}
+        if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
+        if(debug){updateChat("[#808] ","Debug mode toggled")}
     }
-       if (script && data.type === "mention" && data.message.indexOf("-clear" || "808, clear chat") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("808, toggle debug mode") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        debug = !debug;
+        if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
+        if(debug){updateChat("[#808] ","Debug mode toggled")}
+    }
+       if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        announce = !announce;
+        if(announce)API.sendChat("@"+data.from+" I will now announce events!");
+        if(debug){updateChat("[#808] ","Announce mode toggled")}
+    }
+           if (script && data.message.indexOf("808, toggle announce mode") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        announce = !announce;
+        if(announce)API.sendChat("@"+data.from+" I will now announce events!");
+        if(debug){updateChat("[#808] ","Announce mode toggled")}
+    }
+       if (script && data.type === "mention" && data.message.indexOf("-clear") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         API.sendChat("/clear");
+        if(announce)API.sendChat("@"+data.from+" Chat cleared!");
+    }
+           if (script && data.message.indexOf("808, clear chat") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        API.sendChat("/clear");
+        if(announce)API.sendChat("@"+data.from+" Chat cleared!");
     }
     if (script && data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         Models.user.changeStatus(0);
@@ -158,30 +180,67 @@ function command(data) {
         Models.user.changeStatus(2);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
-      if (script && data.type === "mention" && data.message.indexOf("-meh" || "808, meh the song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+      if (script && data.type === "mention" && data.message.indexOf("-meh") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         setTimeout(function(){$("#button-vote-negative").click();},1000);
         if(debug){updateChat("[#808] ","Mehing Song")}
+        if(announce)API.sendChat("@"+data.from+" I will meh this song.");
     }
-        if (script && data.type === "mention" && data.message.indexOf("-woot" || "808, woot the song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+          if (script && data.message.indexOf("808, meh this song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        setTimeout(function(){$("#button-vote-negative").click();},1000);
+        if(debug){updateChat("[#808] ","Mehing Song")}
+        if(announce)API.sendChat("@"+data.from+" I will meh this song.");
+    }
+        if (script && data.type === "mention" && data.message.indexOf("-woot") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         setTimeout(function(){$("#button-vote-positive").click();},1000);
         if(debug){updateChat("[#808] ","Wooting Song")}
+        if(announce)API.sendChat("@"+data.from+" I will woot this song.");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-woot on" || "808, turn autowoot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            if (script && data.message.indexOf("808, woot this song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        setTimeout(function(){$("#button-vote-positive").click();},1000);
+        if(debug){updateChat("[#808] ","Wooting Song")}
+        if(announce)API.sendChat("@"+data.from+" I will woot this song.");
+    }
+    if (script && data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Auto";
         if(mirror){
             mirror = false;
             if(debug){updateChat("[#808] ","Mirror turned off due to autowoot")}
-        }
+          }
         autowoot = true;
         if(debug) updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'");
+        if(announce)API.sendChat("@"+data.from+" I have turned on autowoot!");
     }
-     if (script && data.type === "mention" && data.message.indexOf("-curate" || "808, add this song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("808, turn autowoot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        wootmode = "Auto";
+        if(mirror){
+            mirror = false;
+            if(debug){updateChat("[#808] ","Mirror turned off due to autowoot")}
+          }
+        autowoot = true;
+        if(debug) updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'");
+        if(announce)API.sendChat("@"+data.from+" I have turned on autowoot!");
+    }
+     if (script && data.type === "mention" && data.message.indexOf("-curate") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var playlistID = Models.playlist.getSelected().id
             new DJCurateService(playlistID);
             setTimeout(function(){Dialog.closeDialog();}, 1000);
             if(debug){updateChat("[#808] ","Added to current playlist")}
+            if(announce)API.sendChat("@"+data.from+" I have added this song to my playlist.");
         }
-    if (script && !Recent && data.message.indexOf("-ping" || "808, return my ping") > -1) {
+             if (script && data.message.indexOf("808, add this song to your playlist") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            var playlistID = Models.playlist.getSelected().id
+            new DJCurateService(playlistID);
+            setTimeout(function(){Dialog.closeDialog();}, 1000);
+            if(debug){updateChat("[#808] ","Added to current playlist")}
+            if(announce)API.sendChat("@"+data.from+" I have added this song to my playlist.");
+        }
+    if (script && !Recent && data.message.indexOf("-ping") > -1) {
+        API.sendChat("@"+data.from+" Pong!");
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 60000);
+        if (debug) updateChat("[#808] ","Pong");
+    }
+        if (script && !Recent && data.message.indexOf("808, return my ping") > -1) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
         setTimeout(function(){Recent = false;}, 60000);
@@ -215,7 +274,7 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 60000);
         if (debug) updateChat("[#808] ","lelelelele");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-woot off" || "808, turn autowoot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
         if(mirror){
             mirror = false;
@@ -223,8 +282,19 @@ function command(data) {
         }
             autowoot = false;
             if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
+            if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
         }
-        if (script && data.type === "mention" && data.message.indexOf("-mirror on" || "808, mirror my votes") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            if (script && data.message.indexOf("808, turn autowoot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        wootmode = "Off";
+        if(mirror){
+            mirror = false;
+            if(debug) updateChat("[#808} ","Mirror turned of due to autowoot");
+        }
+            autowoot = false;
+            if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
+            if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
+        }
+        if (script && data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             wootmode = "Mirror";
             if(autowoot){
                 if(debug) updateChat("[#808} ","Autowoot turned off due to mirror");
@@ -232,8 +302,19 @@ function command(data) {
             }
             mirror = true;
             if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
+            if(announce)API.sendChat("@"+data.from+" I am now mirroring your votes!");
         }
-        if (script && data.type === "mention" && data.message.indexOf("-mirror off" || "808, stop mirroring my votes") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                if (script && data.message.indexOf("808, mirror my votes") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            wootmode = "Mirror";
+            if(autowoot){
+                if(debug) updateChat("[#808} ","Autowoot turned off due to mirror");
+                autowoot = false;
+            }
+            mirror = true;
+            if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
+            if(announce)API.sendChat("@"+data.from+" I am now mirroring your votes!");
+        }
+        if (script && data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             wootmode = "Off";
             if(autowoot){
                 autowoot = false;
@@ -241,6 +322,17 @@ function command(data) {
             }
             mirror = false;
             if(debug) updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
+            if(announce)API.sendChat("@"+data.from+" I will not mirror your votes anymore.");
+        }
+                if (script && data.message.indexOf("808, stop mirroring my votes") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            wootmode = "Off";
+            if(autowoot){
+                autowoot = false;
+                if(debug) updateChat("[#808]"," Autowoot turned off due to mirror");
+            }
+            mirror = false;
+            if(debug) updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
+            if(announce)API.sendChat("@"+data.from+" I will not mirror your votes anymore.");
         }
         /*if (data.type === "mention" && data.message.indexOf("-leave") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
          setTimeout(function(){window.close},2000);
@@ -249,11 +341,16 @@ function command(data) {
             Models.user.changeDisplayName(RegExp.$1);
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
-         if (script && data.type === "mention" && /808, change your name to (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
+         if (script && /808, change your name to (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
             Models.user.changeDisplayName(RegExp.$1);
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
-        if (data.type === "mention" && data.message.indexOf("-info" || "808, give me your stats") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            var elapsed = new Date().getTime() - joined;
+            API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+" Status: "+status);
+            if(debug){console.log("[#808] Sending status/info")}
+        }
+               if (data.message.indexOf("808, give me your stats") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+" Status: "+status);
             if(debug){console.log("[#808] Sending status/info")}
