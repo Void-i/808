@@ -54,7 +54,7 @@ var day = new Date().getDay();
 
 if(day === 0){
 	weird = "Yes, it is weird/play anything day";
-	
+
 }else{
       weird = "No, It is not weird/play anything day";
 }
@@ -348,9 +348,8 @@ function command(data) {
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
                 if (script && data.type === "mention" && /-join (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
-            location = "http://plug.dj/"+RegExp.$1;
+           location = "http://plug.dj/"+RegExp.$1;
             updateChat("[#808] ","Sent to "+RegExp.$1);
-            if(announce)API.sendChat("Joining plug.dj/"+RegExp.$1);
         }
          if (script && /808, change your name to (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
             Models.user.changeDisplayName(RegExp.$1);
