@@ -1,6 +1,7 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
-    if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+if (Models.room.data.staff[API.getSelf().id] && Models.room.data.staff[API.getSelf().id] > 1){
+    if (data.message.indexOf("-stop") > -1 && ") {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
@@ -29,7 +30,7 @@ function callback(data){
         Models.user.changeStatus(0);
     }
 }
-
+}
 debug = false;
 autowoot = false;
 mirror = true;
