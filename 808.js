@@ -348,7 +348,7 @@ function command(data) {
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
                 if (script && data.type === "mention" && /-join (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
-            setTimeout(function(){location = "http://plug.dj/"+RegExp.$1},100);
+            location = "http://plug.dj/"+RegExp.$1;
             updateChat("[#808] ","Sent to "+RegExp.$1);
             if(announce)API.sendChat("Joining plug.dj/"+RegExp.$1);
         }
