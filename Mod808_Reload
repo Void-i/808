@@ -1,1 +1,9 @@
-nope.avi
+      console.log("[THOMYORKEMOD3000] Running #808_Mod reload script");
+   API.addEventListener(API.CHAT, callback);
+function callback(a){
+if (script && a.type === "mention" && a.message.indexOf("-reload") > -1 && a.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+           setTimeout(function() {Models.user.changeStatus(1);},50);
+            setTimeout(function(){document.location.reload(true)},3000);
+            if(announce)API.sendChat("BRB!");
+        }
+}
