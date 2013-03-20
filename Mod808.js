@@ -1,5 +1,5 @@
-API.addEventListener(API.CHAT, init);
-function init(data){
+API.addEventListener(API.CHAT, callback);
+function callback(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (data.message.indexOf("-stop") === 0) {
         script = false,
