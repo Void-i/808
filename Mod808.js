@@ -17,62 +17,7 @@ if (Models.room.a.staff[a.fromID] && Models.room.a.staff[a.fromID] > 1) {
         if(announce)API.sendChat("Started back up!");
         Models.user.changeStatus(0);
     }
-  }
-}
-
-debug = false;
-autowoot = true;
-script = true;
-wootmode = "Auto";
-Recent = false;
-status = "Running";
-announce = true;
-
-version = "1.02";
-
-var updateChat = function(from, message){
-    Models.chat.receive({
-        type: "update",
-        from: from,
-        message: message,
-        language: Models.user.data.language
-    })
-};
-
-var joined = new Date().getTime();
-
-/******************************/
-API.addEventListener(API.CHAT, command);
-
-API.addEventListener(API.DJ_ADVANCE, DJAdvance);
-
-console.log("[Thom] Running #808_Mod Version "+version);
-
-setTimeout(function(){Models.user.changeStatus(0)},2000);
-    
-    function DJAdvance(){
-        if(script && autowoot){
-        setTimeout(function(){$("#button-vote-positive").click();},5000);
-        if(debug){console.log("[Thom] Autowooting song")}
-    }
-}
-
-if(announce)setTimeout(function(){API.sendChat("Started and running #808_Mod Version "+version)},100);
-/*   
-API.addEventListener(API.DJ_ADVANCE, newdj);
-function newdj(){
-	if(oldDJs.indexOf(API.getDJs()[4].id) === -1){
-	oldDJs.push(API.getDJs()[4].id);
-        localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
-	if(debug) console.log("[#808] New DJ");
-	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you DJ here before, keep in mind only pony music is allowed. Music guidlines: 'thisisatest' ");
-	}
-}
-*/
-/******************************/
-function command(data) {
-if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
-    if (script && data.message.indexOf("-debug") === 0) {
+     if (script && data.message.indexOf("-debug") === 0) {
         debug = !debug;
         if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
         if(debug)console.log("[Thom] Debug mode toggled");
@@ -126,6 +71,60 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if(debug)console.log("[#808] Sending status/info");
         }
     }
+  }
+}
+
+debug = false;
+autowoot = true;
+script = true;
+wootmode = "Auto";
+Recent = false;
+status = "Running";
+announce = true;
+
+version = "1.02";
+
+var updateChat = function(from, message){
+    Models.chat.receive({
+        type: "update",
+        from: from,
+        message: message,
+        language: Models.user.data.language
+    })
+};
+
+var joined = new Date().getTime();
+
+/******************************/
+API.addEventListener(API.CHAT, command);
+
+API.addEventListener(API.DJ_ADVANCE, DJAdvance);
+
+console.log("[Thom] Running #808_Mod Version "+version);
+
+setTimeout(function(){Models.user.changeStatus(0)},2000);
+    
+    function DJAdvance(){
+        if(script && autowoot){
+        setTimeout(function(){$("#button-vote-positive").click();},5000);
+        if(debug){console.log("[Thom] Autowooting song")}
+    }
+}
+
+if(announce)setTimeout(function(){API.sendChat("Started and running #808_Mod Version "+version)},100);
+/*   
+API.addEventListener(API.DJ_ADVANCE, newdj);
+function newdj(){
+	if(oldDJs.indexOf(API.getDJs()[4].id) === -1){
+	oldDJs.push(API.getDJs()[4].id);
+        localStorage.setItem("storedDJs", JSON.stringify(oldDJs));
+	if(debug) console.log("[#808] New DJ");
+	//API.sendChat("@"+API.getDJs()[4].username+" I've never seen you DJ here before, keep in mind only pony music is allowed. Music guidlines: 'thisisatest' ");
+	}
+}
+*/
+/******************************/
+function command(data) { 
         if (script && !Recent && data.message.indexOf("-ping") === 0) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
