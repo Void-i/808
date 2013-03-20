@@ -28,7 +28,7 @@ Recent = false;
 status = "Running";
 announce = true;
 
-version = "1.00";
+version = "1.02";
 
 var updateChat = function(from, message){
     Models.chat.receive({
@@ -46,7 +46,7 @@ API.addEventListener(API.CHAT, command);
 
 API.addEventListener(API.DJ_ADVANCE, DJAdvance);
 
-console.log("[Thom] Running #808_Mod Version"+version);
+console.log("[Thom] Running #808_Mod Version "+version);
 
 setTimeout(function(){Models.user.changeStatus(0)},2000);
     
