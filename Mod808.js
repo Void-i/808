@@ -25,6 +25,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
        if (script && data.message.indexOf("-announce") === 0) {
         announce = !announce;
         if(announce)API.sendChat("@"+data.from+" I will now announce events!");
+        if(!announce)API.sendChat("@"+data.from+" I will no longer announce events!");
         if(debug)console.log("[Thom] Announce mode toggled");
     }
        if (script && data.message.indexOf("-clear") === 0) {
