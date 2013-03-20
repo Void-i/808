@@ -1,6 +1,6 @@
 API.addEventListener(API.CHAT, callback);
-function callback(a){
-if (Models.room.a.staff[a.fromID] && Models.room.a.staff[a.fromID] > 1) {
+function callback(data){
+if (Models.room.data.staff[a.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (a.message.indexOf("-stop") === 0) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
@@ -71,7 +71,7 @@ if (Models.room.a.staff[a.fromID] && Models.room.a.staff[a.fromID] > 1) {
             if(debug)console.log("[#808] Sending status/info");
         }
     }
-  }
+ }
 
 debug = false;
 autowoot = true;
