@@ -1,5 +1,5 @@
-API.addEventListener(API.CHAT, callback);
-function callback(data){
+API.addEventListener(API.CHAT, init);
+function init(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (data.message.indexOf("-stop") === 0) {
         script = false,
@@ -57,7 +57,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     }
 }
 
-if(announce)API.sendChat("Started and running #808_Mod Version"+version);
+if(announce)API.sendChat("Started and running #808_Mod Version "+version);
 /*   
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
