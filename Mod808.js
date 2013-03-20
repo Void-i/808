@@ -3,7 +3,6 @@ function callback(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (data.message.indexOf("-stop") === 0) {
         script = false,
-        API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[Thom] at idle");
             if(announce)API.sendChat("Going into standby...");
@@ -11,7 +10,6 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
     }
     if (data.message.indexOf("-start") === 0) {
         script = true;
-        API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
         console.log("[Thom] started");
         if(announce)API.sendChat("Started back up!");
@@ -111,9 +109,6 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     }
 }
 
-if(announce){
-	setTimeout(function(){API.sendChat("Started and running #808_Mod Version "+version)},100);
-}
 /*   
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
