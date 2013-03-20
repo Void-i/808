@@ -1,6 +1,6 @@
       console.log("[Thom] Running #808_Mod reload script");
-   API.addEventListener(API.CHAT, callback);
-function callback(a){
+   API.addEventListener(API.CHAT, reload);
+function reload(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
 if (a.message.indexOf("-reload") === 0) {
            setTimeout(function() {Models.user.changeStatus(1);},50);
