@@ -2,7 +2,7 @@
    API.addEventListener(API.CHAT, reload);
 function reload(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
-if (a.message.indexOf("-reload") === 0) {
+if (data.message.indexOf("-reload") === 0) {
            setTimeout(function() {Models.user.changeStatus(1);},50);
             setTimeout(function(){document.location.reload(true)},3000);
             if(announce)API.sendChat("BRB!");
