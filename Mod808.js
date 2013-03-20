@@ -72,7 +72,6 @@ if (Models.room.a.staff[a.fromID] && Models.room.a.staff[a.fromID] > 1) {
         }
     }
   }
-}
 
 debug = false;
 autowoot = true;
