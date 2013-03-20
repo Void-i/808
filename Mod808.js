@@ -57,7 +57,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     }
 }
 
-if(announce)API.sendChat("Started and running #808_Mod Version "+version);
+if(announce)setTimeout(function(){API.sendChat("Started and running #808_Mod Version "+version)},100);
 /*   
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
