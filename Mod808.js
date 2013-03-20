@@ -44,8 +44,6 @@ var joined = new Date().getTime();
 /******************************/
 API.addEventListener(API.CHAT, command);
 
-API.addEventListener(API.VOTE_UPDATE, voteUpdate);
-
 API.addEventListener(API.DJ_ADVANCE, DJAdvance);
 
 console.log("[Thom] Running #808_Mod Version"+version);
