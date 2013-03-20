@@ -1,7 +1,7 @@
 API.addEventListener(API.CHAT, callback);
-function callback(data){
-if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
-    if (data.message.indexOf("-stop") === 0) {
+function callback(a){
+if (Models.room.a.staff[a.fromID] && Models.room.a.staff[a.fromID] > 1) {
+    if (a.message.indexOf("-stop") === 0) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
@@ -9,7 +9,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if(announce)API.sendChat("Going into standby...");
         Models.user.changeStatus(3);
     }
-    if (data.message.indexOf("-start") === 0) {
+    if (a.message.indexOf("-start") === 0) {
         script = true;
         API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
