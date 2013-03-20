@@ -143,6 +143,12 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 30000);
         if (debug)console.log("[Thom] Pong");
     }
+            if (script && !Recent && data.message.indexOf("-commands") === 0) {
+        API.sendChat("@"+data.from+" Pong!");
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 30000);
+        if (debug)console.log("[Thom] Pong");
+    }
 }
     /**************Browser Detect****************/
 
