@@ -2,7 +2,7 @@ if(announce)API.sendChat("Started and running #808_Mod Version"+version);
 
 API.addEventListener(API.CHAT, callback);
 function callback(data){
-if (Models.room.data.staff[API.getSelf().id] && Models.room.data.staff[API.getSelf().id] > 1){
+if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (data.message.indexOf("-stop") === 0) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
@@ -73,7 +73,7 @@ function newdj(){
 */
 /******************************/
 function command(data) {
-	if (Models.room.data.staff[API.getSelf().id] && Models.room.data.staff[API.getSelf().id] > 1){
+if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (script && data.message.indexOf("-debug") === 0) {
         debug = !debug;
         if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
