@@ -1,4 +1,4 @@
-      console.log("[THOMYORKEMOD3000] Running #808_Mod reload script");
+      console.log("[Thom] Running #808_Mod reload script");
    API.addEventListener(API.CHAT, callback);
 function callback(a){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
