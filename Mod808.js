@@ -1,6 +1,6 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
-if (Models.room.data.staff[a.fromID] && Models.room.data.staff[data.fromID] > 1) {
+if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
     if (a.message.indexOf("-stop") === 0) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
