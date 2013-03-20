@@ -123,7 +123,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if (data.message.indexOf("-info") === 0) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+". Status: "+status+". Announce: "+announce);
-            if(debug){console.log("[#808] Sending status/info")}
+            if(debug)console.log("[#808] Sending status/info");
         }
     }
         if (script && !Recent && data.message.indexOf("-ping") === 0) {
