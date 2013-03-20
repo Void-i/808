@@ -1,7 +1,7 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
-    if (a.message.indexOf("-stop") === 0) {
+    if (data.message.indexOf("-stop") === 0) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
@@ -9,7 +9,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if(announce)API.sendChat("Going into standby...");
         Models.user.changeStatus(3);
     }
-    if (a.message.indexOf("-start") === 0) {
+    if (data.message.indexOf("-start") === 0) {
         script = true;
         API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
@@ -68,7 +68,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if (data.message.indexOf("-info") === 0) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+". Status: "+status+". Announce: "+announce);
-            if(debug)console.log("[#808] Sending status/info");
+            if(debug)console.log("[Thom] Sending status/info");
         }
     }
  }
@@ -110,7 +110,9 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
     }
 }
 
-if(announce)setTimeout(function(){API.sendChat("Started and running #808_Mod Version "+version)},100);
+if(announce){
+	setTimeout(function(){API.sendChat("Started and running #808_Mod Version "+version)},100);
+}
 /*   
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
