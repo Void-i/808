@@ -1,5 +1,3 @@
-if(announce)API.sendChat("Started and running #808_Mod Version"+version);
-
 API.addEventListener(API.CHAT, callback);
 function callback(data){
 if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
@@ -60,6 +58,8 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
         if(debug){console.log("[Thom] Autowooting song")}
     }
 }
+
+if(announce)API.sendChat("Started and running #808_Mod Version"+version);
 /*   
 API.addEventListener(API.DJ_ADVANCE, newdj);
 function newdj(){
@@ -118,17 +118,17 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if(debug)console.log("[Thom] Autowoot turned off");
             if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
         }
-        if (script && data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
+        if (script && /-nick (.*)$/.exec(data.message) ) {
             Models.user.changeDisplayName(RegExp.$1);
             if(debug)console.log("[Thom] Username changed");
         }
-        if (data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (data.message.indexOf("-info") === 0) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+". Status: "+status+". Announce: "+announce);
             if(debug){console.log("[#808] Sending status/info")}
         }
     }
-        if (script && !Recent && data.message.indexOf("-ping") \=== 0) {
+        if (script && !Recent && data.message.indexOf("-ping") === 0) {
         API.sendChat("@"+data.from+" Pong!");
          Recent = true;
         setTimeout(function(){Recent = false;}, 30000);
