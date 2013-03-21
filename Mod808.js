@@ -43,7 +43,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if(announce)API.sendChat("@"+data.from+" I have wooted this song.");
     }
     if (script && data.message.indexOf("-autowoot") === 0) {
-        if(autowoot)wootmode="Auto";else wootmode="Manual";
+        if(!autowoot)wootmode="Auto";else wootmode="Manual";
         autowoot = !autowoot;
         if(debug) updateChat("[Thom] ","Autowoot: "+autowoot);
         if(announce)API.sendChat("@"+data.from+" Autowoot: "+autowoot);
@@ -75,6 +75,32 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         else {
             listlocation = usernames.indexOf(target);
             new ModerationRemoveDJService(id[listlocation]);
+        }
+               }
+                              if (script && /-add @(.*)$/.exec(data.message)) {
+               	target = RegExp.$1;
+                    var usernames = [],id = [],users = API.getUsers();
+        for (var i in users) {
+            usernames.push(users[i].username);
+            id.push(users[i].id);
+        }
+        if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named ' "+target+" '");
+        else {
+            listlocation = usernames.indexOf(target);
+            new ModerationAddDJService(id[listlocation]);
+        }
+               }
+                              if (script && /-kick @(.*)$/.exec(data.message)) {
+               	target = RegExp.$1;
+                    var usernames = [],id = [],users = API.getUsers();
+        for (var i in users) {
+            usernames.push(users[i].username);
+            id.push(users[i].id);
+        }
+        if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named ' "+target+" '");
+        else {
+            listlocation = usernames.indexOf(target);
+            new ModerationKickUserService(id[listlocation]);
         }
                }
         if (data.message.indexOf("-info") === 0) {
