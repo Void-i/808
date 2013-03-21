@@ -1,6 +1,7 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
-if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
+	//Manager+ commands (too lazy to order the permissions properly)
+if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 2) {
     if (data.message.indexOf("-stop") === 0) {
         script = false,
         status = "At idle";
@@ -60,6 +61,12 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if(debug)console.log("[Thom] Autowoot turned off");
             if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
         }
+                if (script && /-nick (.*)$/.exec(data.message) ) {
+            Models.user.changeDisplayName(RegExp.$1);
+            if(debug)console.log("[Thom] Username changed");
+        }
+        //bouncer+ commands
+}if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] > 1) {
             if (script && data.message.indexOf("-skip") === 0) {
             new ModerationForceSkipService();
         }
@@ -76,14 +83,14 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             new ModerationRemoveDJService(id[listlocation]);
         }
                }
-        if (script && /-nick (.*)$/.exec(data.message) ) {
-            Models.user.changeDisplayName(RegExp.$1);
-            if(debug)console.log("[Thom] Username changed");
-        }
         if (data.message.indexOf("-info") === 0) {
             var elapsed = new Date().getTime() - joined;
-            API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+". Status: "+status+". Announce: "+announce);
-            if(debug)console.log("[Thom] Sending status/info");
+            API.sendChat("@"+data.from+" I've been running for "+Math.round(elapsed/100000)+" minute(s)."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode is: "+wootmode+ ". Debug is: "+debug+". Status: "+status+". Announce is: "+announce);
+            if(debug)console.log("[Thom] Sending info");
+        }
+           if (data.message.indexOf("-status") === 0) {
+            API.sendChat("@"+data.from+" Woot mode is: "+wootmode+ ". Debug is: "+debug+". Status: "+status+". Announce is: "+announce);
+            if(debug)console.log("[Thom] Sending status");
         }
     }
  }
