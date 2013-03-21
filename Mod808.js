@@ -63,7 +63,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if (script && data.message.indexOf("-skip") === 0) {
             new ModerationForceSkipService();
         }
-               if (script && /-nick (.*)$/.exec(data.message)) {
+               if (script && /-remove (.*)$/.exec(data.message)) {
                	target = RegExp.$1;
                     var usernames = [],id = [],users = API.getUsers();
         for (var i in users) {
@@ -75,6 +75,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             listlocation = usernames.indexOf(target);
             new ModerationRemoveDJService(id[listlocation]);
         }
+               }
         if (script && /-nick (.*)$/.exec(data.message) ) {
             Models.user.changeDisplayName(RegExp.$1);
             if(debug)console.log("[Thom] Username changed");
