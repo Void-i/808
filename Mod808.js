@@ -70,7 +70,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             usernames.push(users[i].username);
             id.push(users[i].id);
         }
-        if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named "+target);
+        if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named '"+target+"'");
         else {
             listlocation = usernames.indexOf(target);
             new ModerationRemoveDJService(id[listlocation]);
