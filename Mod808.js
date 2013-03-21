@@ -102,6 +102,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         else {
             listlocation = usernames.indexOf(target);
             new ModerationKickUserService(id[listlocation]);
+                API.sendChat(id[listlocation]);
         }
                }
         if (data.message.indexOf("-info") === 0) {
