@@ -168,7 +168,7 @@ function newdj(){
 
 function voteUpdate(obj){
 	if (obj.vote === -1){
-		API.sendChat("@"+obj.user.username+"Please don't meh, you will receive 2 more warnings and then you will be kicked");
+		API.sendChat("@"+obj.user.username+"Please don't meh, you will receive 1 more warning and then you will be kicked");
 	}
 }
 /******************************/
