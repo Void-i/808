@@ -101,7 +101,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named ' "+target+" '");
         else {
             listlocation = usernames.indexOf(target);
-            new ModerationKickUserService(id);
+            new ModerationKickUserService(id[listlocation]);
         }
                }
         if (data.message.indexOf("-info") === 0) {
