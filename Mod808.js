@@ -63,14 +63,14 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             if (script && data.message.indexOf("-skip") === 0) {
             new ModerationForceSkipService();
         }
-               if (script && /-remove (.*)$/.exec(data.message)) {
-               	target = "@"+RegExp.$1;
+               if (script && /-remove @(.*)$/.exec(data.message)) {
+               	target = RegExp.$1;
                     var usernames = [],id = [],users = API.getUsers();
         for (var i in users) {
             usernames.push(users[i].username);
             id.push(users[i].id);
         }
-        if (usernames.indexOf(target) < 0) log("@"+data.from+" I don't see a user named "+target);
+        if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named "+target);
         else {
             listlocation = usernames.indexOf(target);
             new ModerationRemoveDJService(id[listlocation]);
