@@ -42,8 +42,8 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if(debug)console.log("[Thom] Wooting Song");
         if(announce)API.sendChat("@"+data.from+" I have wooted this song.");
     }
-    if (script && data.message.indexOf("-autowoot on") === 0) {
-        wootmode = "Manual" = "Auto";
+    if (script && data.message.indexOf("-autowoot") === 0) {
+        if(autowoot)wootmode="Auto";else wootmode="Manual";
         autowoot = !autowoot;
         if(debug) updateChat("[Thom] ","Autowoot: "+autowoot);
         if(announce)API.sendChat("@"+data.from+" Autowoot: "+autowoot);
