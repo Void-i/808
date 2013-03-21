@@ -105,7 +105,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
                }
         if (data.message.indexOf("-info") === 0) {
             var elapsed = new Date().getTime() - joined;
-            API.sendChat("@"+data.from+" I've been running for "+Math.round(elapsed/100000)+" minute(s)."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode is: "+wootmode+ ". Debug is: "+debug+". Status: "+status+". Announce is: "+announce);
+            API.sendChat("@"+data.from+" Bot coded by ,DerpTheBass'. I've been running for "+Math.round(elapsed/100000)+" minute(s)."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode is: "+wootmode+ ". Debug is: "+debug+". Status: "+status+". Announce is: "+announce);
             if(debug)console.log("[Thom] Sending info");
         }
            if (data.message.indexOf("-status") === 0) {
