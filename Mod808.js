@@ -43,7 +43,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if(announce)API.sendChat("@"+data.from+" I have wooted this song.");
     }
     if (script && data.message.indexOf("-autowoot on") === 0) {
-        wootmode = "Manual" ? "Auto;
+        wootmode = "Manual" ? "Auto";
         autowoot = !autowoot
         if(debug) updateChat("[Thom] ","Autowoot: "+autowoot);
         if(announce)API.sendChat("@"+data.from+" Autowoot: "+autowoot);
