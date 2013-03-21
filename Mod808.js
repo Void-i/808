@@ -43,10 +43,10 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if(announce)API.sendChat("@"+data.from+" I have wooted this song.");
     }
     if (script && data.message.indexOf("-autowoot on") === 0) {
-        wootmode = "Auto";
-        autowoot = true;
-        if(debug) updateChat("[Thom] ","Autowoot turned on");
-        if(announce)API.sendChat("@"+data.from+" I have turned on autowoot!");
+        wootmode = "Manual" ? "Auto;
+        autowoot = !autowoot
+        if(debug) updateChat("[Thom] ","Autowoot: "+autowoot);
+        if(announce)API.sendChat("@"+data.from+" Autowoot: "+autowoot);
     }
      if (script && data.message.indexOf("-curate") === 0) {
             var playlistID = Models.playlist.getSelected().id
@@ -54,12 +54,6 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             setTimeout(function(){Dialog.closeDialog();}, 1000);
             if(debug)console.log("[Thom] Added "+Playback.media.title+" to current playlist");
             if(announce)API.sendChat("@"+data.from+" I have added "+Playback.media.title+" to the current playlist");
-        }
-    if (script && data.message.indexOf("-autowoot off") === 0) {
-        wootmode = "Off";
-            autowoot = false;
-            if(debug)console.log("[Thom] Autowoot turned off");
-            if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
         }
                 if (script && /-nick (.*)$/.exec(data.message) ) {
             Models.user.changeDisplayName(RegExp.$1);
