@@ -141,6 +141,8 @@ API.addEventListener(API.CHAT, command);
 
 API.addEventListener(API.DJ_ADVANCE, DJAdvance);
 
+API.addEventListener(API.VOTE_UPDATE, voteUpdate);
+
 console.log("[Thom] Running #808_Mod Version "+version);
 
 setTimeout(function(){Models.user.changeStatus(0)},2000);
@@ -163,6 +165,12 @@ function newdj(){
 	}
 }
 */
+
+function voteUpdate(obj){
+	if (obj.vote === -1){
+		API.sendChat("@"+obj.user.username+"Please don't meh, you will receive 2 more warnings and then you will be kicked");
+	}
+}
 /******************************/
 //Free for all commands
 function command(data) { 
