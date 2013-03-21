@@ -144,6 +144,7 @@ function newdj(){
 }
 */
 /******************************/
+//Free for all commands
 function command(data) { 
         if (script && !Recent && data.message.indexOf("-ping") === 0) {
         API.sendChat("@"+data.from+" Pong!");
@@ -152,10 +153,10 @@ function command(data) {
         if (debug)console.log("[Thom] Pong");
     }
             if (script && !Recent && data.message.indexOf("-commands") === 0) {
-        API.sendChat("@"+data.from+" Pong!");
+        API.sendChat("@"+data.from+" http://goo.gl/7xOS4");
          Recent = true;
         setTimeout(function(){Recent = false;}, 30000);
-        if (debug)console.log("[Thom] Pong");
+        if (debug)console.log("[Thom] Sending the commands list");
     }
 }
     /**************Browser Detect****************/
