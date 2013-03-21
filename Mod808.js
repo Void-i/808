@@ -88,7 +88,6 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         else {
             listlocation = usernames.indexOf(target);
             new ModerationAddDJService(id[listlocation]);
-            API.sendChat(id[listlocation]);
         }
                }
                               if (script && /-kick @(.*)$/.exec(data.message)) {
@@ -101,8 +100,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named ' "+target+" '");
         else {
             listlocation = usernames.indexOf(target);
-           new ModerationKickUserService(id[listlocation], "Kick by the bot", 60);
-                API.sendChat(id[listlocation]);
+           new ModerationKickUserService(id[listlocation], "Kick by the bot", 180);
         }
                }
         if (data.message.indexOf("-info") === 0) {
