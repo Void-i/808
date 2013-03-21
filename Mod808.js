@@ -64,7 +64,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
             new ModerationForceSkipService();
         }
                if (script && /-remove (.*)$/.exec(data.message)) {
-               	target = RegExp.$1;
+               	target = "@"+RegExp.$1;
                     var usernames = [],id = [],users = API.getUsers();
         for (var i in users) {
             usernames.push(users[i].username);
