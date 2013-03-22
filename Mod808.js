@@ -1,4 +1,3 @@
-
 API.addEventListener(API.CHAT, callback);
 function callback(data){
 	//Manager+ commands (too lazy to order the permissions properly)
@@ -101,7 +100,7 @@ if (Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >
         if (usernames.indexOf(target) < 0) API.sendChat("@"+data.from+" I don't see a user named ' "+target+" '");
         else {
             listlocation = usernames.indexOf(target);
-           new ModerationKickUserService(id[listlocation], "Kick by the bot", 180);
+           new ModerationKickUserService(id[listlocation], "Kicked by the bot", 180);
         }
                }
         if (data.message.indexOf("-info") === 0) {
