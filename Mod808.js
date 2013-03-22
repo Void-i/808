@@ -165,10 +165,16 @@ function newdj(){
 	}
 }
 */
-
+mehs = [];
 function voteUpdate(obj){
+	if(obj.vote === -1 && AP.getUser(obj.user.uid).mehcount === 3){
+		new ModerateKickUserService(obj.user.uid, "Kicked for excessive mehing", 15);
+	}
 	if (obj.vote === -1){
-	API.sendChat("@"+obj.user.username+"Please don't meh, you will receive 1 more warning and then you will be kicked");
+		if(mehs.indexOf(obj.user.uid) === 0){
+	API.sendChat("@"+obj.user.username+" Please don't meh, you will be kicked if you continue to meh.");
+	mehs.push(obj.user.uid);
+		}
 	}
 }
 /******************************/
