@@ -175,7 +175,7 @@ function voteUpdate(obj){
 		new ModerateKickUserService(obj.user.uid, "Kicked for excessive mehing", 15);
 	}
 	if (obj.vote === -1){
-		if(mehs.indexOf(obj.user.id) === 0){
+		if(mehs.indexOf(obj.user.id) === 1){
 	API.sendChat("@"+obj.user.username+" Please don't meh, you will be kicked if you continue to meh.");
 	mehs.push(obj.user.uid);
 		}
