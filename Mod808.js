@@ -122,6 +122,7 @@ wootmode = "Auto";
 Recent = false;
 status = "Running";
 announce = true;
+mehcount = 0;
 
 version = "1.02";
 
@@ -167,11 +168,14 @@ function newdj(){
 */
 mehs = [];
 function voteUpdate(obj){
-	if(obj.vote === -1 && API.getUser(obj.user.uid).mehcount === 3){
+	       if (API.getUser(obj.user.id).vote == -1){
+            API.getUser(obj.user.id).mehcount ++
+	       }
+	if(obj.vote === -1 && API.getUser(obj.user.id).mehcount === 3){
 		new ModerateKickUserService(obj.user.uid, "Kicked for excessive mehing", 15);
 	}
 	if (obj.vote === -1){
-		if(mehs.indexOf(obj.user.uid) === 0){
+		if(mehs.indexOf(obj.user.id) === 0){
 	API.sendChat("@"+obj.user.username+" Please don't meh, you will be kicked if you continue to meh.");
 	mehs.push(obj.user.uid);
 		}
