@@ -1,3 +1,4 @@
+API.sendChat("Bot online!");
 API.addEventListener(API.CHAT, callback);
 function callback(data){
 	//Manager+ commands (too lazy to order the permissions properly)
