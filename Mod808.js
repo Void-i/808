@@ -167,7 +167,7 @@ function newdj(){
 */
 mehs = [];
 function voteUpdate(obj){
-	if(obj.vote === -1 && AP.getUser(obj.user.uid).mehcount === 3){
+	if(obj.vote === -1 && API.getUser(obj.user.uid).mehcount === 3){
 		new ModerateKickUserService(obj.user.uid, "Kicked for excessive mehing", 15);
 	}
 	if (obj.vote === -1){
