@@ -1,4 +1,4 @@
-$(document).ready(function(){
+setTimeout(function(){
     //Init
     API.addEventListener(API.CHAT, chat);
     API.addEventListener(API.DJ_ADVANCE, DJ_Advance);
@@ -313,4 +313,4 @@ localStorage.setItem("hasRun", "Yes");
 
     };
     BrowserDetect.init();
-});
+}, 2000);
