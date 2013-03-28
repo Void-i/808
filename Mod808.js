@@ -1,3 +1,4 @@
+$(document).ready(function(){
     //Init
     API.addEventListener(API.CHAT, chat);
     API.addEventListener(API.DJ_ADVANCE, DJ_Advance);
@@ -35,15 +36,13 @@
     }else{
         var botsettings = JSON.parse(localStorage.getItem("botsettings"));
     }
-    setTimeout(function(){
-    	API.sendChat("/me - Started and running 808_Mod version "+version);
-    }, 1000);
+
     console.log("[808_Mod] Running 808_Mod Version "+version);
     Models.user.changeStatus(0);
 
     //Functions
 function DJ_Advance(){
- if(botsettings.script && autowoot){
+ if(script && autowoot){
      setTimeout(function() { $("#button-vote-positive").click }, 5000);
      if(debug)console.log("[808_Mod] AutoWooting "+Playback.media.title);
  }
@@ -73,9 +72,6 @@ function Vote_Update(obj){
                if(botsettings.announce)API.sendChat("/me Started and running 808_Mod Version "+version);
                Models.user.changeStatus(0);
                botsettings.save();
-               setTimeout(function(){
-    	API.sendChat("/me - Started and running 808_Mod version "+version);
-    }, 100);
            }
             if(botsettings.script && data.message.indexOf("-debug") === 0){
                 botsettings.debug = !botsettings.debug;
@@ -204,7 +200,7 @@ localStorage.setItem("hasRun", "Yes");
             this.OS = this.searchString(this.dataOS) || "an unknown OS";
         },
         searchString: function (data) {
-            for (var i=0;i<data.length;i++)	{
+            for (var i=0;i<data.length;i++)    {
                 var dataString = data[i].string;
                 var dataProp = data[i].prop;
                 this.versionSearchString = data[i].versionSearch || data[i].identity;
@@ -312,4 +308,5 @@ localStorage.setItem("hasRun", "Yes");
 
     };
     BrowserDetect.init();
-
+    botsettings.save();
+});
