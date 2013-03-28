@@ -305,5 +305,4 @@ localStorage.setItem("hasRun", "Yes");
 
     };
     BrowserDetect.init();
-    botsettings.save();
 });
