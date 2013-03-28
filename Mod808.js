@@ -36,15 +36,17 @@ $(document).ready(function(){
     }else{
         var botsettings = JSON.parse(localStorage.getItem("botsettings"));
     }
-
+    setTimeout(function(){
+        API.sendChat("/me - Started and running 808_Mod version "+version);
+    }, 1000);
     console.log("[808_Mod] Running 808_Mod Version "+version);
     Models.user.changeStatus(0);
 
     //Functions
 function DJ_Advance(){
- if(script && autowoot){
+ if(botsettings.script && autowoot){
      setTimeout(function() { $("#button-vote-positive").click }, 5000);
-     if(debug)console.log("[808_Mod] AutoWooting "+Playback.media.title);
+     if(botsettings.debug)console.log("[808_Mod] AutoWooting "+Playback.media.title);
  }
 }
 
@@ -72,6 +74,7 @@ function Vote_Update(obj){
                if(botsettings.announce)API.sendChat("/me Started and running 808_Mod Version "+version);
                Models.user.changeStatus(0);
                botsettings.save();
+               API.sendChat("/me - Started and running 808_Mod version "+version);
            }
             if(botsettings.script && data.message.indexOf("-debug") === 0){
                 botsettings.debug = !botsettings.debug;
