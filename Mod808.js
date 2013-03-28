@@ -44,7 +44,7 @@ $(document).ready(function(){
 
     //Functions
 function DJ_Advance(){
- if(script && autowoot){
+ if(botsettings.script && autowoot){
      setTimeout(function() { $("#button-vote-positive").click }, 5000);
      if(debug)console.log("[808_Mod] AutoWooting "+Playback.media.title);
  }
