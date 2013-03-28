@@ -38,7 +38,7 @@ $(document).ready(function(){
     }
     setTimeout(function(){
     	API.sendChat("/me - Started and running 808_Mod version "+version);
-    }, 100);
+    }, 1000);
     console.log("[808_Mod] Running 808_Mod Version "+version);
     Models.user.changeStatus(0);
 
