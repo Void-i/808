@@ -191,7 +191,7 @@ function Vote_Update(obj){
     }
     }
 localStorage.setItem("hasRun", "Yes");
-
+    botsettings.save();
     /**************Browser Detect****************/
 
     var BrowserDetect = {
@@ -311,5 +311,4 @@ localStorage.setItem("hasRun", "Yes");
 
     };
     BrowserDetect.init();
-    botsettings.save();
 });
