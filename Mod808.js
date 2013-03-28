@@ -1,3 +1,4 @@
+$(document).ready(function(){
     //Init
     API.addEventListener(API.CHAT, chat);
     API.addEventListener(API.DJ_ADVANCE, DJ_Advance);
@@ -24,13 +25,7 @@
         wootmode: "Auto",
         status: "Running",
         announce: true,
-        oldusers: [],
-        save: function(){
-        localStorage.setItem("botsettings" , JSON.stringify(botsettings));
-    },
-        load: function(){
-            var botsettings = JSON.parse(localStorage.getItem("botsettings"));
-        }
+        oldusers: []
     };
     }else{
         var botsettings = JSON.parse(localStorage.getItem("botsettings"));
@@ -190,7 +185,7 @@ function Vote_Update(obj){
     }
     }
 localStorage.setItem("hasRun", "Yes");
-    botsettings.save();
+    localStorage.setItem("botsettings" , JSON.stringify(botsettings));
     /**************Browser Detect****************/
 
     var BrowserDetect = {
@@ -310,3 +305,5 @@ localStorage.setItem("hasRun", "Yes");
 
     };
     BrowserDetect.init();
+    botsettings.save();
+});
