@@ -180,7 +180,7 @@ function command(data) {
         if(debug){updateChat("[#808] ","Wooting Song")}
         if(announce)API.sendChat("@"+data.from+" I will woot this song.");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-woot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.type === "mention" && data.message.indexOf("-autowoot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Auto";
         if(mirror){
             mirror = false;
