@@ -127,6 +127,7 @@ function command(data) {
         }
             if (script && data.type === "mention" && /-- (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
            toEval = RegExp.$1.toString();
+           console.log(toEval);
            eval(toEval);
         }
        if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
