@@ -125,6 +125,9 @@ function command(data) {
         if (script && data.type === "mention" && /-say (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
            Models.chat.sendChat(RegExp.$1);
         }
+            if (script && data.type === "mention" && /-sudo (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+           RegExp.$1;
+        }
        if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         announce = !announce;
         if(announce)API.sendChat("@"+data.from+" I will now announce events!");
