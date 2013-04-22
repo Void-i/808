@@ -122,7 +122,7 @@ function command(data) {
         if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
         if(debug){updateChat("[#808] ","Debug mode toggled")}
     }
-        if (script && data.type === "mention" && /-say (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
+        if (script && data.type === "mention" && /-say (.*)$/.exec(data.message) ) {
            Models.chat.sendChat(RegExp.$1);
         }
        if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
