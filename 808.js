@@ -122,6 +122,9 @@ function command(data) {
         if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
         if(debug){updateChat("[#808] ","Debug mode toggled")}
     }
+    if (/^-say (.*)$/.exec(data.message)) {
+    	Model.chat.sendChat(RegExp.$1);
+    }
        if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         announce = !announce;
         if(announce)API.sendChat("@"+data.from+" I will now announce events!");
@@ -233,6 +236,16 @@ function command(data) {
         if (debug) updateChat("[#808] ","@"+data.from+" "+weird);
     }
            if (script && !Recent && data.message.indexOf("is it play anything day") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 30000);
+    }
+              if (script && !Recent && data.message.indexOf("is it still play anything day") > -1) {
+        API.sendChat("@"+data.from+" "+weird);
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 30000);
+    }
+                  if (script && !Recent && data.message.indexOf("is it still weird day") > -1) {
         API.sendChat("@"+data.from+" "+weird);
          Recent = true;
         setTimeout(function(){Recent = false;}, 30000);
