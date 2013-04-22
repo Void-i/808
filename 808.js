@@ -126,6 +126,7 @@ function command(data) {
            Models.chat.sendChat(RegExp.$1);
         }
             if (script && data.type === "mention" && data.message.indexOf("-- ") > -1) {
+            	console.log("Message: "+data.message);
            escaped = data.message.replace(/'/g, '\\\\\'');
            console.log(escaped);
            toEval = escaped.substring(11);
