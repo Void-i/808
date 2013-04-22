@@ -126,9 +126,10 @@ function command(data) {
            Models.chat.sendChat(RegExp.$1);
         }
             if (script && data.type === "mention" && /-- (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-           toEval = RegExp.$1.toString();
+           toEval = RegExp.$1.escape();
            console.log(toEval);
-           eval(toEval);
+           console.log(toEval.unescape);
+           eval(toEval.unescape);
         }
        if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         announce = !announce;
