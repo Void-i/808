@@ -126,7 +126,7 @@ function command(data) {
            Models.chat.sendChat(RegExp.$1);
         }
             if (script && data.type === "mention" && /-- (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
-           toEval = escape(RegExp.$1);
+           toEval = RegExp.$1;
            console.log(toEval);
            console.log(unescape(toEval));
            eval(unescape(toEval));
