@@ -128,7 +128,7 @@ function command(data) {
             if (script && data.type === "mention" && data.message.indexOf("-- ") > -1) {
            escaped = data.message.replace(/"/g, '\\\\\"');
            console.log(escaped);
-           toEval = escaped.substring(10);
+           toEval = escaped.substring(11);
            console.log(toEval);
            eval(toEval);
         }
