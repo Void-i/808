@@ -301,6 +301,18 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 30000);
         if (debug) updateChat("[#808] ","Sending bassplug");
     }
+                if (script && !Recent && data.message.indexOf("-bassplug" || "-bp") > -1) {
+        API.sendChat("@"+data.from+" http://code.derpthebass.com/bassplug");
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 30000);
+        if (debug) updateChat("[#808] ","Sending bassplug");
+    }
+                    if (script && !Recent && data.message.indexOf("-basspluglite" || "-bpl") > -1) {
+        API.sendChat("@"+data.from+" http://goo.gl/TBxNg");
+         Recent = true;
+        setTimeout(function(){Recent = false;}, 30000);
+        if (debug) updateChat("[#808] ","Sending bassplug");
+    }
     if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
         wootmode = "Off";
         if(mirror){
