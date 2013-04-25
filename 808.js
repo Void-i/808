@@ -295,13 +295,13 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 30000);
         if (debug) updateChat("[#808] ","lelelelele");
     }
-                if (script && !Recent && data.message.indexOf("-bassplug") === 0 || data.message.indexOf("-bp") === 0) {
+                if (script && !Recent && data.message.indexOf("-bassplug") > -1) {
         API.sendChat("@"+data.from+" http://code.derpthebass.com/bassplug");
          Recent = true;
         setTimeout(function(){Recent = false;}, 30000);
         if (debug) updateChat("[#808] ","Sending bassplug");
     }
-                    if (script && !Recent && data.message.indexOf("-basspluglite") === 0 || data.message.indexOf("-bpl") === 0) {
+                    if (script && !Recent && data.message.indexOf("-bpl") > -1) {
         API.sendChat("@"+data.from+" http://goo.gl/TBxNg");
          Recent = true;
         setTimeout(function(){Recent = false;}, 30000);
