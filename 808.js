@@ -52,12 +52,7 @@ var joined = new Date().getTime();
 
 var day = new Date().getDay();
 
-if(day === 0){
-    weird = "Yes, it is weird/play anything day";
-
-}else{
-      weird = "No, It is not weird/play anything day";
-}
+    weird = "Weird/Play anything day doesn't exist anymore";
 
 /*Run this code if this is the first time the script has been started
 	oldDJs = [];
