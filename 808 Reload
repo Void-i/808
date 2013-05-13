@@ -5,4 +5,8 @@ if (script && a.type === "mention" && a.message.indexOf("-reload") > -1 && (a.fr
             Models.user.changeStatus(1);
             setTimeout(function(){document.location.reload(true)},3000);
         }
+if (script && a.message.indexOf("808, reload") > -1 && (a.fromID === "50aeb07e96fba52c3ca04ca8" || "50aeb607c3b97a2cb4c35ac1")) {
+            Models.user.changeStatus(1);
+            setTimeout(function(){document.location.reload(true)},3000);
+        }
 }
