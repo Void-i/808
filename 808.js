@@ -1,27 +1,27 @@
 API.addEventListener(API.CHAT, callback);
 function callback(data){
-    if (data.type === "mention" && data.message.indexOf("-stop") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (data.message.indexOf("-stop") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[#808] at idle");
         Models.user.changeStatus(3);
     }
-        if (data.message.indexOf("808, go into sleep mode") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (data.message.indexOf("808, go into sleep mode") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = false,
         API.removeEventListener(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[#808] at idle");
         Models.user.changeStatus(3);
     }
-    if (data.type === "mention" && data.message.indexOf("-start") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (data.message.indexOf("-start") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = true;
         API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
         console.log("[#808] started");
         Models.user.changeStatus(0);
     }
-       if (data.message.indexOf("808, start up") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+       if (data.message.indexOf("808, start up") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = true;
         API.addEventListener(API.DJ_ADVANCE, newdj)
         status = "Running";
@@ -107,20 +107,20 @@ function newdj(){
 
 /******************************/
 function command(data) {
-    if (script && data.type === "mention" && data.message.indexOf("-debug") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-debug") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         debug = !debug;
         if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
         if(debug){updateChat("[#808] ","Debug mode toggled")}
     }
-        if (script && data.message.indexOf("808, toggle debug mode") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("808, toggle debug mode") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         debug = !debug;
         if(announce)API.sendChat("@"+data.from+" Debug: "+debug);
         if(debug){updateChat("[#808] ","Debug mode toggled")}
     }
-        if (script && data.type === "mention" && /-say (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && /-say (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
            Models.chat.sendChat(RegExp.$1);
         }
-            if (script && data.type === "mention" && data.message.replace(/'/g, '\\\\\'').indexOf("-- ") > -1) {
+            if (script && data.message.replace(/'/g, '\\\\\'').indexOf("-- ") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             	console.log("Message: "+data.message);
            escaped = data.message.replace(/'/g, '\\\\\'');
            console.log(escaped);
@@ -128,65 +128,65 @@ function command(data) {
            console.log(toEval);
            eval(toEval);
         }
-       if (script && data.type === "mention" && data.message.indexOf("-announce") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+       if (script && data.message.indexOf("-announce") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         announce = !announce;
         if(announce)API.sendChat("@"+data.from+" I will now announce events!");
         if(debug){updateChat("[#808] ","Announce mode toggled")}
     }
-           if (script && data.message.indexOf("808, toggle announce mode") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+           if (script && data.message.indexOf("808, toggle announce mode") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         announce = !announce;
         if(announce)API.sendChat("@"+data.from+" I will now announce events!");
         if(debug){updateChat("[#808] ","Announce mode toggled")}
     }
-       if (script && data.type === "mention" && data.message.indexOf("-clear") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+       if (script && data.message.indexOf("-clear") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         API.sendChat("/clear");
         if(announce)API.sendChat("@"+data.from+" Chat cleared!");
     }
-           if (script && data.message.indexOf("808, clear chat") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+           if (script && data.message.indexOf("808, clear chat") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         API.sendChat("/clear");
         if(announce)API.sendChat("@"+data.from+" Chat cleared!");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-avail" || "-back" || "-here") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-avail" || "-back" || "-here") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         Models.user.changeStatus(0);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
-    if (script && data.type === "mention" && data.message.indexOf("-afk" || "-away" || "-brb") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-afk" || "-away" || "-brb") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         Models.user.changeStatus(1);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
-    if (script && data.type === "mention" && data.message.indexOf("-sleeping" || "-sleep") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-sleeping" || "-sleep") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         Models.user.changeStatus(3);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
-    if (script && data.type === "mention" && data.message.indexOf("-idle" || "-gaming") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-idle" || "-gaming") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         Models.user.changeStatus(-1);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
-    if (script && data.type === "mention" && data.message.indexOf("-working" || "-work") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-working" || "-work") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         Models.user.changeStatus(2);
         if(debug){updateChat("[#808] ","Status changed by ,DerpTheBass'")}
     }
-      if (script && data.type === "mention" && data.message.indexOf("-meh") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+      if (script && data.message.indexOf("-meh") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         setTimeout(function(){$("#button-vote-negative").click();},1000);
         if(debug){updateChat("[#808] ","Mehing Song")}
         if(announce)API.sendChat("@"+data.from+" I will meh this song.");
     }
-          if (script && data.message.indexOf("808, meh this song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+          if (script && data.message.indexOf("808, meh this song") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         setTimeout(function(){$("#button-vote-negative").click();},1000);
         if(debug){updateChat("[#808] ","Mehing Song")}
         if(announce)API.sendChat("@"+data.from+" I will meh this song.");
     }
-        if (script && data.type === "mention" && data.message.indexOf("-woot") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("-woot") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         setTimeout(function(){$("#button-vote-positive").click();},1000);
         if(debug){updateChat("[#808] ","Wooting Song")}
         if(announce)API.sendChat("@"+data.from+" I will woot this song.");
     }
-            if (script && data.message.indexOf("808, woot this song") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            if (script && data.message.indexOf("808, woot this song") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         setTimeout(function(){$("#button-vote-positive").click();},1000);
         if(debug){updateChat("[#808] ","Wooting Song")}
         if(announce)API.sendChat("@"+data.from+" I will woot this song.");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-autowoot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-autowoot on") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         wootmode = "Auto";
         if(mirror){
             mirror = false;
@@ -196,7 +196,7 @@ function command(data) {
         if(debug) updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'");
         if(announce)API.sendChat("@"+data.from+" I have turned on autowoot!");
     }
-        if (script && data.message.indexOf("808, turn autowoot on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("808, turn autowoot on") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         wootmode = "Auto";
         if(mirror){
             mirror = false;
@@ -206,14 +206,14 @@ function command(data) {
         if(debug) updateChat("[#808] ","Autowoot turned on by ,DerpTheBass'");
         if(announce)API.sendChat("@"+data.from+" I have turned on autowoot!");
     }
-     if (script && data.type === "mention" && data.message.indexOf("-curate") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+     if (script && data.message.indexOf("-curate") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             var playlistID = Models.playlist.getSelected().id
             new DJCurateService(playlistID);
             setTimeout(function(){Dialog.closeDialog();}, 1000);
             if(debug){updateChat("[#808] ","Added to current playlist")}
             if(announce)API.sendChat("@"+data.from+" I have added this song to my playlist.");
         }
-             if (script && data.message.indexOf("808, add this song to your playlist") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+             if (script && data.message.indexOf("808, add this song to your playlist") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             var playlistID = Models.playlist.getSelected().id
             new DJCurateService(playlistID);
             setTimeout(function(){Dialog.closeDialog();}, 1000);
@@ -302,7 +302,7 @@ function command(data) {
         setTimeout(function(){Recent = false;}, 30000);
         if (debug) updateChat("[#808] ","Sending bassplug");
     }
-    if (script && data.type === "mention" && data.message.indexOf("-woot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+    if (script && data.message.indexOf("-woot off") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         wootmode = "Off";
         if(mirror){
             mirror = false;
@@ -312,7 +312,7 @@ function command(data) {
             if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
             if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
         }
-            if (script && data.message.indexOf("808, turn autowoot off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+            if (script && data.message.indexOf("808, turn autowoot off") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         wootmode = "Off";
         if(mirror){
             mirror = false;
@@ -322,7 +322,7 @@ function command(data) {
             if(debug){updateChat("[#808] ","Autowoot turned off by ,DerpTheBass'")}
             if(announce)API.sendChat("@"+data.from+" I have turned off autowoot!");
         }
-        if (script && data.type === "mention" && data.message.indexOf("-mirror on") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("-mirror on") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             wootmode = "Mirror";
             if(autowoot){
                 if(debug) updateChat("[#808} ","Autowoot turned off due to mirror");
@@ -332,7 +332,7 @@ function command(data) {
             if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
             if(announce)API.sendChat("@"+data.from+" I am now mirroring your votes!");
         }
-                if (script && data.message.indexOf("808, mirror my votes") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                if (script && data.message.indexOf("808, mirror my votes") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             wootmode = "Mirror";
             if(autowoot){
                 if(debug) updateChat("[#808} ","Autowoot turned off due to mirror");
@@ -342,7 +342,7 @@ function command(data) {
             if(debug){updateChat("[#808] ","Mirror vote turned on by ,DerpTheBass'")}
             if(announce)API.sendChat("@"+data.from+" I am now mirroring your votes!");
         }
-        if (script && data.type === "mention" && data.message.indexOf("-mirror off") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (script && data.message.indexOf("-mirror off") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             wootmode = "Off";
             if(autowoot){
                 autowoot = false;
@@ -352,7 +352,7 @@ function command(data) {
             if(debug) updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
             if(announce)API.sendChat("@"+data.from+" I will not mirror your votes anymore.");
         }
-                if (script && data.message.indexOf("808, stop mirroring my votes") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+                if (script && data.message.indexOf("808, stop mirroring my votes") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             wootmode = "Off";
             if(autowoot){
                 autowoot = false;
@@ -362,27 +362,27 @@ function command(data) {
             if(debug) updateChat("[#808] ","Mirror vote turned off by ,DerpTheBass'");
             if(announce)API.sendChat("@"+data.from+" I will not mirror your votes anymore.");
         }
-        /*if (data.type === "mention" && data.message.indexOf("-leave") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        /*if (data.message.indexOf("-leave") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
          setTimeout(function(){window.close},2000);
          }*/
-        if (script && data.type === "mention" && /-nick (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
+        if (script && /-nick (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             Models.user.changeDisplayName(RegExp.$1);
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
-                if (script && data.type === "mention" && /-join (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
+                if (script && /-join (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
            location = "http://plug.dj/"+RegExp.$1;
             updateChat("[#808] ","Sent to "+RegExp.$1);
         }
-         if (script && /808, change your name to (.*)$/.exec(data.message) && data.fromID === "50aeb07e96fba52c3ca04ca8") {
+         if (script && /808, change your name to (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             Models.user.changeDisplayName(RegExp.$1);
             updateChat("[#808] ","Username changed by ,DerpTheBass'");
         }
-        if (data.type === "mention" && data.message.indexOf("-info") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+        if (data.message.indexOf("-info") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+" Status: "+status+" Announce: "+announce);
             if(debug){console.log("[#808] Sending status/info")}
         }
-               if (data.message.indexOf("808, give me your stats") > -1 && data.fromID === "50aeb07e96fba52c3ca04ca8" ) {
+               if (data.message.indexOf("808, give me your stats") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             var elapsed = new Date().getTime() - joined;
             API.sendChat("@,DerpTheBass' I've been running for "+Math.round(elapsed/100000)+" minutes."+" Running on "+BrowserDetect.browser+" Version "+BrowserDetect.version+" on "+BrowserDetect.OS+". Woot mode: "+wootmode+ ". Debug: "+debug+" Status: "+status+" Announce: "+announce);
             if(debug){console.log("[#808] Sending status/info")}
