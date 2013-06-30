@@ -120,9 +120,9 @@ function command(data) {
         if (script && /-say (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
            Models.chat.sendChat(RegExp.$1);
         }
-            if (script && data.message.replace(/'/g, '&#39').indexOf("-- ") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
+            if (script && data.message.replace(/'/g, "&#39").indexOf("-- ") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             	console.log("Message: "+data.message);
-           escaped = data.message.replace(/&#39;/g, ''');
+           escaped = data.message.replace(/&#39;/g, "'");
            console.log(escaped);
            toEval = escaped.substring(3);
            console.log(toEval);
