@@ -124,7 +124,7 @@ function command(data) {
             	console.log("Message: "+data.message);
            escaped = data.message.replace(/'/g, '\\\\\'');
            console.log(escaped);
-           toEval = escaped.substring(11);
+           toEval = escaped.substring(3);
            console.log(toEval);
            eval(toEval);
         }
