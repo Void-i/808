@@ -371,7 +371,8 @@ function command(data) {
         }
                 if (script && /-join (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
            location = "http://plug.dj/"+RegExp.$1;
-            updateChat("[#808] ","Sent to "+RegExp.$1);
+            if(debug)updateChat("[#808] ","Sent to "+RegExp.$1);
+            if(announce)Models.chat.sendChat("Going to "+RegExp.$1);
         }
          if (script && /808, change your name to (.*)$/.exec(data.message) && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
             Models.user.changeDisplayName(RegExp.$1);
