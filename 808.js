@@ -1,32 +1,32 @@
-API.addEventListener(API.CHAT, callback);
+API.on(API.CHAT, callback);
 function callback(data){
     if (data.message.indexOf("-stop") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = false,
-        API.removeEventListener(API.DJ_ADVANCE, newdj)
+        API.on(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[#808] at idle");
-        Models.user.changeStatus(3);
+        API.setStatus(API.STATUS.SLEEPING);
     }
         if (data.message.indexOf("808, go into sleep mode") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = false,
-        API.removeEventListener(API.DJ_ADVANCE, newdj)
+        API.on(API.DJ_ADVANCE, newdj)
         status = "At idle";
             console.log("[#808] at idle");
-        Models.user.changeStatus(3);
+        API.setStatus(API.STATUS.SLEEPING);
     }
     if (data.message.indexOf("-start") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = true;
-        API.addEventListener(API.DJ_ADVANCE, newdj)
+        API.on(API.DJ_ADVANCE, newdj)
         status = "Running";
         console.log("[#808] started");
         Models.user.changeStatus(0);
     }
        if (data.message.indexOf("808, start up") > -1 && (data.fromID === "50aeb07e96fba52c3ca04ca8" || API.getSelf().id)) {
         script = true;
-        API.addEventListener(API.DJ_ADVANCE, newdj)
+        API.on(API.DJ_ADVANCE, newdj)
         status = "Running";
         console.log("[#808] started");
-        Models.user.changeStatus(0);
+        API.setStatus(API.STATUS.AVAILABLE);
     }
 }
 
@@ -39,20 +39,15 @@ Recent = false;
 status = "Running";
 announce = false;
 
-var updateChat = function(from, message){
-    Models.chat.receive({
-        type: "update",
-        from: from,
-        message: message,
-        language: Models.user.data.language
-    })
+var updateChat = function(message){
+  API.chatLog(message);
 };
 
 var joined = new Date().getTime();
 
 var day = new Date().getDay();
-
-    weird = "Weird/Play anything day doesn't exist anymore";
+  
+    //weird = "Weird/Play anything day doesn't exist anymore";
 
 /*Run this code if this is the first time the script has been started
 	oldDJs = [];
@@ -62,17 +57,17 @@ var day = new Date().getDay();
 
 var oldDJs = JSON.parse(localStorage.getItem("storedDJs"));
 /******************************/
-API.addEventListener(API.CHAT, command);
+API.on(API.CHAT, command);
 
-API.addEventListener(API.VOTE_UPDATE, voteUpdate);
+API.on(API.VOTE_UPDATE, voteUpdate);
 
-API.addEventListener(API.DJ_ADVANCE, DJAdvance);
+API.on(API.DJ_ADVANCE, DJAdvance);
 
 //setTimeout(function(){API.sendChat("@,DerpTheBass' :3")}, 3000);
 
 console.log("[#808] Running #808 Alt control script V. 14");
 
-setTimeout(function(){Models.user.changeStatus(0)},2000);
+setTimeout(function(){API.setStatus(API.STATUS.AVAILABLE)},2000);
     
     function DJAdvance(){
         if(script && autowoot){
@@ -95,7 +90,7 @@ setTimeout(function(){Models.user.changeStatus(0)},2000);
         }
     }
     
-API.addEventListener(API.DJ_ADVANCE, newdj);
+API.on(API.DJ_ADVANCE, newdj);
 function newdj(){
 	if(oldDJs.indexOf(API.getDJs()[4].id) === -1){
 	oldDJs.push(API.getDJs()[4].id);
